@@ -1,0 +1,24 @@
+Return-Path: <billing@paypa1-secure-check.com>
+Received: from mail.paypa1-secure-check.com (unknown [203.0.113.45])
+Authentication-Results: mx.example.org; spf=fail smtp.mailfrom=paypa1-secure-check.com; dkim=none; dmarc=fail
+From: "PayPal Support" <billing@paypa1-secure-check.com>
+Reply-To: account-review@protonmail-relay.net
+To: employee@example.org
+Subject: Action required: unusual activity on your account
+Date: Thu, 01 Oct 2026 08:14:02 +0000
+Content-Type: text/plain; charset="utf-8"
+
+Dear customer,
+
+We noticed unusual activity on your account. Your access will be limited
+within 24 hours unless you verify your details:
+
+https://paypa1-secure-check.com/verify/session?id=88213
+
+Invoice attached (Invoice_88213.zip, SHA256 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855).
+
+PayPal Security Team
+
+---
+NOTE: This is a fictional training sample. All domains and IPs are reserved
+documentation addresses or made up. Do not visit them.
