@@ -1,0 +1,33 @@
+title: New Service Installed From User-Writable Path
+id: 4b8c2d93-1e7f-4a6b-9c3d-5e6f7a8b9c13
+status: experimental
+description: Detects creation of a Windows service whose binary sits in a user-writable or temporary folder, a common persistence and privilege escalation technique.
+author: Tchatchoua Beltus Bejanga
+date: 2026-10-06
+references:
+    - https://attack.mitre.org/techniques/T1543/003/
+tags:
+    - attack.persistence
+    - attack.t1543.003
+logsource:
+    product: windows
+    service: system
+detection:
+    selection:
+        Provider_Name: 'Service Control Manager'
+        EventID: 7045
+    suspicious_path:
+        ImagePath|contains:
+            - '\AppData\'
+            - '\Temp\'
+            - '\Users\Public\'
+            - '\ProgramData\'
+            - '\Downloads\'
+    condition: selection and suspicious_path
+fields:
+    - ServiceName
+    - ImagePath
+    - AccountName
+falsepositives:
+    - Some software updaters install services from ProgramData; verify the signer and vendor
+level: high

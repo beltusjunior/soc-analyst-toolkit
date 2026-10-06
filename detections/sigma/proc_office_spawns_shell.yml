@@ -1,0 +1,45 @@
+title: Office Application Spawning a Shell or Script Host
+id: 9d4e1a72-6c3b-4f5e-8a2d-0b1c2d3e4f72
+status: experimental
+description: Detects Microsoft Office applications launching command shells or script interpreters, typical of malicious macro documents delivered by phishing.
+author: Tchatchoua Beltus Bejanga
+date: 2026-10-06
+references:
+    - https://attack.mitre.org/techniques/T1204/002/
+    - https://attack.mitre.org/techniques/T1566/001/
+tags:
+    - attack.execution
+    - attack.t1204.002
+    - attack.initial-access
+    - attack.t1566.001
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection_parent:
+        ParentImage|endswith:
+            - '\WINWORD.EXE'
+            - '\EXCEL.EXE'
+            - '\POWERPNT.EXE'
+            - '\OUTLOOK.EXE'
+            - '\MSACCESS.EXE'
+    selection_child:
+        Image|endswith:
+            - '\cmd.exe'
+            - '\powershell.exe'
+            - '\pwsh.exe'
+            - '\wscript.exe'
+            - '\cscript.exe'
+            - '\mshta.exe'
+            - '\rundll32.exe'
+            - '\regsvr32.exe'
+            - '\certutil.exe'
+    condition: all of selection_*
+fields:
+    - ParentImage
+    - Image
+    - CommandLine
+    - User
+falsepositives:
+    - Legitimate business add-ins or macros; confirm with the document owner and allow-list by exact command line
+level: high
