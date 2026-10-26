@@ -14,6 +14,7 @@ Everything here is built around the day-to-day workflow of a Tier 1 / Tier 2 SOC
 | [`scripts/`](scripts) | Python triage tools: IOC extraction, reputation lookups, Windows log analysis |
 | [`templates/`](templates) | Incident report, escalation and shift handoff templates |
 | [`reference/`](reference) | Cheat sheets: Windows Event IDs, MITRE ATT&CK tactics, triage questions |
+| [`bug-bounty/`](bug-bounty) | Scope checklist, report template, worked example report and learning path for authorised bug bounty work |
 
 ## Playbooks
 
@@ -69,6 +70,7 @@ network that blocks that, skip them with `-x attacktag -x d3_fendtag`.
 - Threat intelligence enrichment (VirusTotal, AbuseIPDB)
 - Python automation for repetitive analyst tasks
 - Clear incident documentation and escalation writing
+- Responsible vulnerability disclosure and bug bounty reporting (CVSS, CWE)
 
 ## Disclaimer
 

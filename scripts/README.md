@@ -36,6 +36,15 @@ python scripts/failed_logon_analyzer.py export.csv --threshold 20 --spray-users 
 
 The script's header includes a PowerShell one-liner for producing the CSV from a Windows host.
 
+## scope_check.py
+
+Checks hosts, URLs and IPs against a bug bounty program's scope before you test them. Wildcards (`*.example.com`), exact hosts, IPs and CIDR ranges are supported; lines starting with `!` are exclusions and always win. It exits non-zero if anything is out of scope. See [`bug-bounty/`](../bug-bounty) for the full workflow.
+
+```bash
+python scripts/scope_check.py scope.txt shop.example.com https://admin.example.com/login
+python scripts/scope_check.py scope.txt -f hosts.txt --only-in > targets.txt
+```
+
 ## Example output
 
 ```
