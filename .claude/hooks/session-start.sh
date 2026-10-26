@@ -1,13 +1,18 @@
 #!/bin/bash
-# Installs REA (reverse-engineering MCP server + skill) and the Ghidra
-# decompiler it uses for native binaries. Cloud sessions only; idempotent.
+# Installs the toolkit's Python deps, lint tooling (ruff, yamllint, sigma-cli),
+# and REA (reverse-engineering MCP server + skill) with the Ghidra decompiler
+# it uses for native binaries. Cloud sessions only; idempotent.
 set -euo pipefail
 
 if [ "${CLAUDE_CODE_REMOTE:-}" != "true" ]; then
   exit 0
 fi
 
-pip install -q -r "${CLAUDE_PROJECT_DIR:-.}/requirements.txt"
+# --ignore-installed pyparsing: sigma-cli needs a newer pyparsing than the
+# Debian-managed copy, which pip cannot uninstall.
+pip install -q --ignore-installed pyparsing \
+  -r "${CLAUDE_PROJECT_DIR:-.}/requirements.txt" \
+  -r "${CLAUDE_PROJECT_DIR:-.}/requirements-dev.txt"
 
 REA_VERSION="6.7.0"
 GHIDRA_VERSION="12.1.4"

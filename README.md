@@ -45,6 +45,19 @@ python scripts/failed_logon_analyzer.py security_export.csv --threshold 10
 
 See [`scripts/README.md`](scripts/README.md) for full usage.
 
+## Development
+
+```bash
+pip install -r requirements-dev.txt
+
+ruff check scripts/                 # lint the Python scripts
+yamllint -d relaxed detections/     # YAML syntax
+sigma check detections/sigma/       # validate Sigma rules
+```
+
+`sigma check` downloads MITRE ATT&CK / D3FEND data for its tag validators; on a
+network that blocks that, skip them with `-x attacktag -x d3_fendtag`.
+
 ## Skills demonstrated
 
 - Alert triage and incident response process (NIST SP 800-61)

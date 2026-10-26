@@ -1,0 +1,4 @@
+# Lint / validation tooling (not needed to run the scripts)
+ruff
+yamllint
+sigma-cli
