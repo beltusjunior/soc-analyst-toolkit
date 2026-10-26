@@ -2,3 +2,5 @@
 ruff
 yamllint
 sigma-cli
+bandit
+pip-audit

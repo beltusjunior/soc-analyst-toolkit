@@ -53,6 +53,8 @@ pip install -r requirements-dev.txt
 ruff check scripts/                 # lint the Python scripts
 yamllint -d relaxed detections/     # YAML syntax
 sigma check detections/sigma/       # validate Sigma rules
+bandit -r scripts/                  # security scan of the Python code
+pip-audit -r requirements.txt       # known-vulnerable dependencies
 ```
 
 `sigma check` downloads MITRE ATT&CK / D3FEND data for its tag validators; on a

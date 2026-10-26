@@ -34,6 +34,11 @@ ABUSE_URL = "https://api.abuseipdb.com/api/v2/check"
 TIMEOUT = 20
 
 
+def clean(value):
+    """Replace control characters in API data (e.g. uploader-chosen file names) before printing."""
+    return re.sub(r"[\x00-\x1f\x7f-\x9f]", "?", str(value))
+
+
 def classify(indicator):
     indicator = indicator.strip().replace("[.]", ".").replace("(.)", ".")
     try:
@@ -113,7 +118,7 @@ def lookup(indicator, vt_key, abuse_key):
     kind, value = classify(indicator)
     print("=" * 60)
     if kind is None:
-        print(f"{indicator}: not recognised as an IP, domain or hash")
+        print(f"{clean(indicator)}: not recognised as an IP, domain or hash")
         return
     print(f"{value}  ({kind})")
     vt = abuse = None
@@ -121,14 +126,14 @@ def lookup(indicator, vt_key, abuse_key):
         try:
             vt = virustotal(kind, value, vt_key)
             for k, v in vt.items():
-                print(f"  VT {k:<14} {v}")
+                print(f"  VT {k:<14} {clean(v)}")
         except requests.RequestException as err:
             print(f"  VirusTotal error: {err}")
     if abuse_key and kind == "ip":
         try:
             abuse = abuseipdb(value, abuse_key)
             for k, v in abuse.items():
-                print(f"  AbuseIPDB {k:<17} {v}")
+                print(f"  AbuseIPDB {k:<17} {clean(v)}")
         except requests.RequestException as err:
             print(f"  AbuseIPDB error: {err}")
     print(f"  VERDICT: {verdict(vt, abuse)}")

@@ -23,6 +23,7 @@ Usage:
 """
 import argparse
 import csv
+import re
 import sys
 from collections import Counter, defaultdict
 
@@ -47,6 +48,11 @@ STATUS_CODES = {
 }
 
 IGNORED_IPS = {"", "-", "::1", "127.0.0.1"}
+
+
+def clean(value):
+    """Replace control characters so attacker-chosen usernames can't inject terminal escapes."""
+    return re.sub(r"[\x00-\x1f\x7f-\x9f]", "?", (value or "").strip())
 
 
 def map_columns(fieldnames):
@@ -76,9 +82,9 @@ def analyze(path, threshold, spray_users):
         cols = map_columns(reader.fieldnames or [])
         for row in reader:
             event = str(row.get(cols["eventid"], "")).strip()
-            user = (row.get(cols["user"]) or "").strip().lower()
-            ip = (row.get(cols["ip"]) or "").strip()
-            when = (row.get(cols.get("time", ""), "") or "").strip() if "time" in cols else ""
+            user = clean(row.get(cols["user"])).lower()
+            ip = clean(row.get(cols["ip"]))
+            when = clean(row.get(cols["time"])) if "time" in cols else ""
             if ip in IGNORED_IPS or user.endswith("$"):
                 continue  # skip local/blank sources and machine accounts
             if event == "4625":
@@ -86,7 +92,7 @@ def analyze(path, threshold, spray_users):
                 users_by_ip[ip].add(user)
                 fails_by_user[user] += 1
                 if "status" in cols:
-                    code = (row.get(cols["status"]) or "").strip().lower()
+                    code = clean(row.get(cols["status"])).lower()
                     reasons[STATUS_CODES.get(code, code or "unknown")] += 1
                 if when:
                     first_seen.setdefault(ip, when)

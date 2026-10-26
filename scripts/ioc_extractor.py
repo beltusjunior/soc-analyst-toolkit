@@ -23,11 +23,14 @@ FILE_EXTENSIONS = {
     "eml", "msg", "csv", "json", "xml", "tmp", "dat", "sys", "ini", "cfg", "lnk",
 }
 
+# The lookbehinds on email and domain stop the regex from retrying at every
+# character of a long run (e.g. "a.a.a.a..."), which made crafted input take minutes.
+# The URL pattern excludes control characters so terminal escapes are never printed.
 PATTERNS = {
-    "url": re.compile(r"\bhttps?://[^\s<>\"'\)\]]+", re.IGNORECASE),
-    "email": re.compile(r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b"),
+    "url": re.compile(r"\bhttps?://[^\s<>\"'\)\]\x00-\x1f\x7f]+", re.IGNORECASE),
+    "email": re.compile(r"(?<![A-Za-z0-9._%+-])[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b"),
     "ipv4": re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b"),
-    "domain": re.compile(r"\b(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?\.)+[A-Za-z]{2,24}\b"),
+    "domain": re.compile(r"(?<![A-Za-z0-9.-])(?:[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?\.)+[A-Za-z]{2,24}\b"),
     "sha256": re.compile(r"\b[A-Fa-f0-9]{64}\b"),
     "sha1": re.compile(r"\b[A-Fa-f0-9]{40}\b"),
     "md5": re.compile(r"\b[A-Fa-f0-9]{32}\b"),
