@@ -2,23 +2,23 @@
  {
   "q": "Facing forward toward the bow, which side of the boat is port?",
   "o": [
-   "The right side",
    "The left side",
    "The back",
-   "The front"
+   "The front",
+   "The right side"
   ],
-  "a": 1,
+  "a": 0,
   "e": "Port is the left side when facing the bow. Starboard is the right side. One way to remember it: port and left both have four letters."
  },
  {
   "q": "At night you see a single red sidelight on another powerboat. What are you looking at?",
   "o": [
-   "Its starboard side",
-   "Its port side",
    "Its stern",
-   "An anchored vessel"
+   "An anchored vessel",
+   "Its starboard side",
+   "Its port side"
   ],
-  "a": 1,
+  "a": 3,
   "e": "Sidelights are red on the port side and green on the starboard side. A red light means you are seeing that boat's port side."
  },
  {
@@ -26,21 +26,21 @@
   "o": [
    "Hold your course and speed",
    "Speed up to cross ahead of it",
-   "Give way. Slow down, stop or change course to pass behind it",
-   "Sound five short blasts and continue"
+   "Sound five short blasts and continue",
+   "Give way. Slow down, stop or change course to pass behind it"
   ],
-  "a": 2,
+  "a": 3,
   "e": "A vessel approaching from your starboard side is the stand-on vessel. You are the give-way vessel and must take early, clear action to keep out of its way."
  },
  {
   "q": "Two powerboats are approaching each other head-on. What should both operators do?",
   "o": [
-   "Both turn to port",
    "Both turn to starboard and pass port to port",
+   "Both stop and wait",
    "The larger boat holds course",
-   "Both stop and wait"
+   "Both turn to port"
   ],
-  "a": 1,
+  "a": 0,
   "e": "In a head-on situation, neither boat is stand-on. Both alter course to starboard so they pass port side to port side."
  },
  {
@@ -57,31 +57,31 @@
  {
   "q": "You are returning from open sea into a harbor. Where should the red buoys be?",
   "o": [
-   "On your left (port) side",
-   "On your right (starboard) side",
+   "It does not matter",
    "Directly ahead",
-   "It does not matter"
+   "On your right (starboard) side",
+   "On your left (port) side"
   ],
-  "a": 1,
+  "a": 2,
   "e": "Red, right, returning. When heading upstream or returning from sea, keep red markers on your starboard (right) side and green markers on your port side."
  },
  {
   "q": "How are red nun buoys numbered?",
   "o": [
-   "Odd numbers",
-   "Even numbers",
    "Letters only",
-   "They are not numbered"
+   "They are not numbered",
+   "Even numbers",
+   "Odd numbers"
   ],
-  "a": 1,
+  "a": 2,
   "e": "Red nuns carry even numbers and green cans carry odd numbers. Numbers increase as you head upstream or toward the harbor."
  },
  {
   "q": "Under federal rules, what life jackets must a 20-foot motorboat carry?",
   "o": [
-   "One throwable device only",
-   "One wearable life jacket per person, plus one throwable device",
    "Life jackets only for children",
+   "One wearable life jacket per person, plus one throwable device",
+   "One throwable device only",
    "One wearable life jacket for the operator"
   ],
   "a": 1,
@@ -90,21 +90,21 @@
  {
   "q": "What does a series of five or more short, rapid blasts on a horn mean?",
   "o": [
+   "Danger, or doubt about the other boat's intentions",
    "I am turning to starboard",
    "I am operating astern propulsion",
-   "Danger, or doubt about the other boat's intentions",
    "I am leaving the dock"
   ],
-  "a": 2,
+  "a": 0,
   "e": "Five or more short blasts is the danger or doubt signal. It warns another vessel that you do not understand its intentions or that a collision risk exists."
  },
  {
   "q": "Where is carbon monoxide most likely to build up to dangerous levels on a boat with the engine running?",
   "o": [
-   "At the bow",
-   "Near the stern and swim platform",
    "On the flybridge only",
-   "Carbon monoxide cannot build up outdoors"
+   "Near the stern and swim platform",
+   "Carbon monoxide cannot build up outdoors",
+   "At the bow"
   ],
   "a": 1,
   "e": "Exhaust collects near the stern, swim platform and enclosed spaces. Never swim or hold onto the swim platform while the engine or generator is running."
@@ -112,32 +112,32 @@
  {
   "q": "After fueling a boat with a gasoline inboard engine, what should you do before starting it?",
   "o": [
+   "Open the fuel cap to release pressure",
    "Start it immediately to clear the fuel lines",
    "Run the blower for at least four minutes and sniff for fumes",
-   "Open the fuel cap to release pressure",
    "Rinse the deck with water"
   ],
-  "a": 1,
+  "a": 2,
   "e": "Gasoline vapors are heavier than air and collect in the bilge. Run the blower at least four minutes and check the engine compartment for fumes before starting."
  },
  {
   "q": "Which fire extinguisher class is designed for flammable liquids such as gasoline and oil?",
   "o": [
-   "Class A",
    "Class B",
+   "Class A",
    "Class C",
    "Class D"
   ],
-  "a": 1,
+  "a": 0,
   "e": "Class B extinguishers handle flammable liquids. Marine-rated B extinguishers are what the Coast Guard requires on boats that need one."
  },
  {
   "q": "According to Coast Guard statistics, what is the leading cause of death in recreational boating accidents?",
   "o": [
-   "Fire",
+   "Propeller strikes",
    "Drowning",
-   "Carbon monoxide",
-   "Propeller strikes"
+   "Fire",
+   "Carbon monoxide"
   ],
   "a": 1,
   "e": "Drowning is the leading cause of death, and most victims who drowned were not wearing a life jacket."
@@ -145,10 +145,10 @@
  {
   "q": "Operating a boat under the influence of alcohol is:",
   "o": [
-   "Legal if you are not driving a car",
+   "Only illegal at night",
    "Illegal in every state and under federal law",
    "Only illegal on ocean waters",
-   "Only illegal at night"
+   "Legal if you are not driving a car"
   ],
   "a": 1,
   "e": "Boating under the influence is illegal everywhere in the U.S. Most states use a 0.08 blood alcohol limit, and sun, wind and motion make impairment worse on the water."
@@ -158,65 +158,65 @@
   "o": [
    "Swim hard toward shore",
    "Float on your back with arms spread",
-   "Use the HELP position: knees to chest, arms crossed",
-   "Take off your life jacket to move faster"
+   "Take off your life jacket to move faster",
+   "Use the HELP position: knees to chest, arms crossed"
   ],
-  "a": 2,
+  "a": 3,
   "e": "The Heat Escape Lessening Posture (HELP) protects the body's core. Groups should huddle together. Swimming uses up heat quickly."
  },
  {
   "q": "Where should you attach the anchor line on a small boat?",
   "o": [
    "The stern",
-   "The bow",
    "Either side",
-   "The transom drain plug"
+   "The transom drain plug",
+   "The bow"
   ],
-  "a": 1,
+  "a": 3,
   "e": "Anchor from the bow. Anchoring a small boat from the stern can let waves come over the low transom and swamp it."
  },
  {
   "q": "On which waters are visual distress signals required by federal law for most recreational boats?",
   "o": [
    "All lakes and rivers",
+   "Only in international waters",
    "Coastal waters and the Great Lakes",
-   "Only private lakes",
-   "Only in international waters"
+   "Only private lakes"
   ],
-  "a": 1,
+  "a": 2,
   "e": "Federal rules require visual distress signals on coastal waters, the Great Lakes and connected waters. Boats 16 feet and longer need day and night signals. Smaller boats need night signals when operating between sunset and sunrise."
  },
  {
   "q": "You see a red flag with a white diagonal stripe in the water. What does it mean?",
   "o": [
-   "A no-wake zone",
    "Divers are below. Slow down and stay well clear",
-   "A swimming area is closed",
-   "A fuel dock is ahead"
+   "A no-wake zone",
+   "A fuel dock is ahead",
+   "A swimming area is closed"
   ],
-  "a": 1,
+  "a": 0,
   "e": "That is the divers-down flag. Keep a safe distance as required by your state, often 100 feet or more, and go slowly."
  },
  {
   "q": "When must a boat display its navigation lights?",
   "o": [
    "Only in marked channels",
+   "Only when anchored",
    "From sunset to sunrise and during periods of reduced visibility",
-   "Only when other boats are nearby",
-   "Only when anchored"
+   "Only when other boats are nearby"
   ],
-  "a": 1,
+  "a": 2,
   "e": "Navigation lights are required from sunset to sunrise and in restricted visibility such as fog or heavy rain."
  },
  {
   "q": "What happens when you release the throttle on most jet-drive personal watercraft?",
   "o": [
-   "It steers more sharply",
-   "You lose most of your steering control",
    "It brakes automatically",
-   "It turns toward shore"
+   "It turns toward shore",
+   "It steers more sharply",
+   "You lose most of your steering control"
   ],
-  "a": 1,
+  "a": 3,
   "e": "A jet-drive PWC steers by directing its water jet. With no throttle there is little or no thrust, so turning becomes very hard. Never let go of the throttle to avoid an obstacle."
  }
 ]
