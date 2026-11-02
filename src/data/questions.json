@@ -1,0 +1,222 @@
+[
+ {
+  "q": "Which character must every Excel formula start with?",
+  "o": [
+   "#",
+   "@",
+   "=",
+   "+"
+  ],
+  "a": 2,
+  "e": "Formulas begin with an equals sign. Without it, Excel treats what you type as text or a number."
+ },
+ {
+  "q": "You copy the formula =B2*$C$1 from D2 down to D3. What does it become?",
+  "o": [
+   "=B3*$C$2",
+   "=B3*$C$1",
+   "=C3*$D$1",
+   "=B2*$C$1"
+  ],
+  "a": 1,
+  "e": "B2 is a relative reference, so it shifts to B3. $C$1 is absolute: the dollar signs lock both the column and the row, so it stays fixed."
+ },
+ {
+  "q": "What does the reference A$1 lock when copied?",
+  "o": [
+   "Only the row",
+   "Nothing",
+   "Both column and row",
+   "Only the column"
+  ],
+  "a": 0,
+  "e": "The dollar sign sits before the row number, so the row stays fixed while the column can change. This is a mixed reference."
+ },
+ {
+  "q": "In =VLOOKUP(A2,D:F,3,FALSE), what does FALSE do?",
+  "o": [
+   "Ignores blank cells",
+   "Requires an exact match",
+   "Returns FALSE if nothing is found",
+   "Sorts the table first"
+  ],
+  "a": 1,
+  "e": "FALSE (or 0) tells VLOOKUP to find an exact match. TRUE, or leaving it out, gives an approximate match and assumes the first column is sorted."
+ },
+ {
+  "q": "What is a key limitation of VLOOKUP?",
+  "o": [
+   "It can only return values from columns to the right of the lookup column",
+   "It cannot use cell references",
+   "It only works with numbers",
+   "It only searches the first 100 rows"
+  ],
+  "a": 0,
+  "e": "VLOOKUP always searches the first column of the table and returns values to its right. INDEX/MATCH and XLOOKUP don't have this limit."
+ },
+ {
+  "q": "By default, what does XLOOKUP return when no match is found?",
+  "o": [
+   "The closest value",
+   "#N/A",
+   "An empty cell",
+   "0"
+  ],
+  "a": 1,
+  "e": "XLOOKUP returns #N/A unless you supply its optional if_not_found argument. It also defaults to an exact match."
+ },
+ {
+  "q": "A range contains the values 10, \"apple\", 25 and one empty cell. What does COUNTA return?",
+  "o": [
+   "1",
+   "2",
+   "4",
+   "3"
+  ],
+  "a": 3,
+  "e": "COUNTA counts every non-empty cell, including text. COUNT would return 2 because it counts only numbers."
+ },
+ {
+  "q": "What usually causes a #DIV/0! error?",
+  "o": [
+   "Text in a SUM range",
+   "A misspelled function name",
+   "Dividing by zero or by an empty cell",
+   "A deleted column"
+  ],
+  "a": 2,
+  "e": "#DIV/0! appears when a formula divides by zero or by a cell that is empty. Wrapping the formula in IFERROR is a common way to handle it."
+ },
+ {
+  "q": "What does #REF! mean?",
+  "o": [
+   "The formula refers to a cell that no longer exists or is out of range",
+   "A lookup found no match",
+   "The file is read-only",
+   "A number is too large"
+  ],
+  "a": 0,
+  "e": "#REF! appears when a referenced cell has been deleted or a formula points outside its range, such as a VLOOKUP column number larger than the table."
+ },
+ {
+  "q": "What is a pivot table mainly used for?",
+  "o": [
+   "Drawing charts from images",
+   "Checking spelling",
+   "Protecting a worksheet",
+   "Summarizing and grouping large amounts of data quickly"
+  ],
+  "a": 3,
+  "e": "Pivot tables summarize data, for example total sales by region and month, without writing formulas. They come up in almost every Excel job test."
+ },
+ {
+  "q": "In SUMIFS, which argument comes first?",
+  "o": [
+   "The first criteria range",
+   "The first condition",
+   "The range of values to add",
+   "It depends on the data"
+  ],
+  "a": 2,
+  "e": "SUMIFS(sum_range, criteria_range1, criteria1, ...) puts the sum range first. SUMIF does the opposite: SUMIF(range, criteria, sum_range)."
+ },
+ {
+  "q": "What does =ROUND(3.456,2) return?",
+  "o": [
+   "3.5",
+   "3.45",
+   "3",
+   "3.46"
+  ],
+  "a": 3,
+  "e": "ROUND rounds to the given number of decimal places. The third decimal is 6, so 3.456 rounds up to 3.46."
+ },
+ {
+  "q": "What does the TRIM function remove?",
+  "o": [
+   "Numbers from text",
+   "All spaces",
+   "Extra spaces, leaving single spaces between words",
+   "Line breaks only"
+  ],
+  "a": 2,
+  "e": "TRIM removes leading and trailing spaces and reduces runs of spaces between words to one. It is useful for cleaning imported data."
+ },
+ {
+  "q": "A1 contains 10. What does =IF(A1>10,\"High\",\"Low\") return?",
+  "o": [
+   "TRUE",
+   "High",
+   "Low",
+   "An error"
+  ],
+  "a": 2,
+  "e": "10 is not greater than 10, so the test is false and IF returns the third argument: Low. Use >= to include 10."
+ },
+ {
+  "q": "What does Freeze Panes do?",
+  "o": [
+   "Hides rows",
+   "Locks cells so they cannot be edited",
+   "Stops formulas from recalculating",
+   "Keeps selected rows or columns visible while you scroll"
+  ],
+  "a": 3,
+  "e": "Freeze Panes keeps headers in view while you scroll through long or wide data. It is on the View tab."
+ },
+ {
+  "q": "Which feature lets you restrict what users can type in a cell, for example with a dropdown list?",
+  "o": [
+   "Data Validation",
+   "Conditional Formatting",
+   "Goal Seek",
+   "Text to Columns"
+  ],
+  "a": 0,
+  "e": "Data Validation, on the Data tab, restricts input to a list, a number range, dates and more."
+ },
+ {
+  "q": "What does Text to Columns do?",
+  "o": [
+   "Changes the font of a column",
+   "Splits one column into several using a delimiter or fixed width",
+   "Merges several columns into one",
+   "Converts numbers stored as text"
+  ],
+  "a": 1,
+  "e": "Text to Columns splits data such as \"Chen, Ava\" into separate columns, using a delimiter like a comma or a fixed width."
+ },
+ {
+  "q": "Why do many analysts prefer INDEX/MATCH over VLOOKUP?",
+  "o": [
+   "It works without a lookup value",
+   "It can look left and does not break when columns are inserted",
+   "It is the only lookup in Google Sheets",
+   "It is shorter to type"
+  ],
+  "a": 1,
+  "e": "INDEX/MATCH takes separate lookup and return ranges, so it can return values from any column and keeps working when columns are added to the table."
+ },
+ {
+  "q": "What does Conditional Formatting do?",
+  "o": [
+   "Applies a theme to the workbook",
+   "Converts formulas to values",
+   "Formats a sheet for printing",
+   "Changes a cell's formatting automatically based on its value"
+  ],
+  "a": 3,
+  "e": "Conditional Formatting applies colors, icons or data bars when values meet rules you set, such as highlighting sales below target."
+ },
+ {
+  "q": "In Excel for Windows, which key cycles a selected reference between relative and absolute while you edit a formula?",
+  "o": [
+   "F4",
+   "F11",
+   "F2",
+   "F9"
+  ],
+  "a": 0,
+  "e": "F4 cycles a reference through A1, $A$1, A$1 and $A1. F2 edits the active cell, and F9 recalculates."
+ }
+]
