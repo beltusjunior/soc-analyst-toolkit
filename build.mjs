@@ -35,24 +35,26 @@ ${SITE.staging ? '<meta name="robots" content="noindex, nofollow">' : ""}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@600;800&family=IBM+Plex+Sans:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400;1,6..96,500&family=Manrope:wght@400;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap">
 <link rel="stylesheet" href="/assets/site.css">
 ${schema.map((s) => `<script type="application/ld+json">${JSON.stringify(s)}</script>`).join("\n")}
 </head>
 <body>
 ${SITE.staging ? '<div class="staging"><div class="wrap">Preview build. Not yet public.</div></div>' : ""}
 <header class="top"><div class="wrap">
-<a class="brand" href="/" aria-label="${SITE.name} home">${LOGO}${SITE.name}</a>
+<a class="brand" href="/" aria-label="${SITE.name} home">Excel<span class="serif">practice</span>test<span class="dot" aria-hidden="true"></span></a>
 <nav aria-label="Main">${n("/practice/", "practice", "Formula practice")}${n("/excel-interview-test/", "test", "Interview test")}${n("/guides/", "guides", "Guides")}${n("/pro/", "pro", "Pro")}</nav>
 </div></header>
 <main class="wrap">
 ${body}
 </main>
 <footer><div class="wrap">
-<span>© ${SITE.year} ${SITE.name}. Independent practice resource. Microsoft and Excel are trademarks of Microsoft Corporation; this site is not affiliated with or endorsed by Microsoft.</span>
-<span><a href="/about/">About</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/contact/">Contact</a></span>
+<div class="foot-mark" aria-hidden="true">=PRACTICE(<span class="serif">you</span>)</div>
+<div><span>© ${SITE.year} ${SITE.name}. Independent practice resource. Microsoft and Excel are trademarks of Microsoft Corporation; this site is not affiliated with or endorsed by Microsoft.</span>
+<span><a href="/about/">About</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/contact/">Contact</a></span></div>
 </div></footer>
 ${practice ? `<script type="application/json" id="ex-data">${JSON.stringify(EX).replace(/</g, "\\u003c")}</script>\n<script src="/assets/formula.js" defer></script>\n<script src="/assets/practice.js" defer></script>` : ""}
+${path === "/" ? '<script src="/assets/hero.js" defer></script>' : ""}
 ${test ? `<script type="application/json" id="q-interview">${JSON.stringify(QS).replace(/</g, "\\u003c")}</script>\n<script src="/assets/quiz.js" defer></script>` : ""}
 </body>
 </html>`;
@@ -65,20 +67,49 @@ const quizBox = `<div class="quiz" data-test="interview" data-title="Excel inter
 const exCards = (list) => `<div class="cards">${list.map((x) => `<a class="card" href="/practice/${x.slug}/"><span class="chip lvl-${x.level.toLowerCase()}">${x.level}</span><h3>${esc(x.title)}</h3><p>${esc(x.task)}</p></a>`).join("")}</div>`;
 const guideCards = `<div class="cards">${guides.map((g) => `<a class="card" href="/guides/${g.slug}/"><span class="label">${g.minutes} min read</span><h3>${esc(g.title)}</h3><p>${esc(g.description)}</p></a>`).join("")}</div>`;
 
+const HERO_ROWS = [["Name", "Dept", "Region", "Sales", "Target"], ["Ava", "Sales", "East", 52000, 50000], ["Ben", "Marketing", "West", 31000, 35000], ["Chloe", "Sales", "West", 61000, 55000], ["Dan", "Support", "East", 27000, 30000], ["Ema", "Sales", "East", 48000, 50000], ["Total", null, null, null, null]];
+const heroArt = () => {
+  const L = ["A", "B", "C", "D", "E"];
+  let g = `<span class="h"></span>` + L.map((l) => `<span class="h">${l}</span>`).join("");
+  HERO_ROWS.forEach((row, r) => {
+    const rn = r + 1;
+    g += `<span class="h">${rn}</span>`;
+    row.forEach((v, c) => {
+      const ref = L[c] + rn, isNum = typeof v === "number";
+      const inRange = L[c] === "D" && rn >= 2 && rn <= 6;
+      const isRes = ref === "D7";
+      const cls = [rn === 1 || (rn === 7 && c === 0) ? "t" : "", isNum ? "n" : "", inRange ? "in" : "", isRes ? "res" : ""].filter(Boolean).join(" ");
+      g += `<span class="${cls}" data-ref="${ref}" data-c="${L[c]}" data-r="${rn}"${v !== null ? ` data-v="${esc(v)}"` : ""}>${isRes ? "219,000" : v === null ? "" : isNum ? v.toLocaleString("en-US") : esc(v)}</span>`;
+    });
+  });
+  return `<div class="art" data-hero aria-label="Animated example: a formula is typed and its result appears in the sheet">
+<div class="art-sheet"><div class="art-bar"><span class="fx">fx</span><span class="addr">D7</span><span class="typed">=SUM(D2:D6)<span class="caret"></span></span></div>
+<div class="art-grid">${g}</div></div>
+<div class="art-tag"><small>Now practising</small><b>SUM</b></div></div>`;
+};
+const FUNCS = ["SUM", "AVERAGE", "IF", "COUNTIF", "SUMIF", "VLOOKUP", "XLOOKUP", "INDEX", "MATCH", "IFERROR", "LEFT", "FIND", "TRIM", "ROUND"];
+const ticker = () => { const items = FUNCS.map((f, i) => `<span>${i % 2 ? `<i>=</i>${f.toLowerCase()}()` : `${f}<i>(</i>`}</span>`).join(""); return `<div class="ticker" aria-hidden="true"><div class="ticker-track">${items}${items}</div></div>`; };
+const elements = () => `<div class="elements">${EX.exercises.map((x, i) => `<a class="el ${x.level.toLowerCase()}" href="/practice/${x.slug}/"><span class="no"><b>${String(i + 1).padStart(2, "0")}</b><span>${x.level}</span></span><span class="sym">${x.fn}</span><span class="nm">${esc(x.title.split(": ")[1] || x.title)}</span></a>`).join("")}<a class="el dark" href="/excel-interview-test/"><span class="no"><b>15</b><span>Test</span></span><span class="sym">TEST</span><span class="nm">20-question interview test</span></a><div class="el soon"><span class="no"><b>16</b><span>Coming with Pro</span></span><span class="sym">Pivot tables</span><span class="nm">summarize anything</span></div></div>
+<div class="legend note"><span><i style="background:var(--ok)"></i>Beginner</span><span><i style="background:var(--cobalt)"></i>Intermediate</span><span><i style="background:var(--bad)"></i>Advanced</span></div>`;
+
 page("/", {
   practice: true,
   title: "Excel Practice Test 2026 | Free Excel Formula Exercises & Interview Test",
   description: "Practise real Excel formulas in your browser: VLOOKUP, XLOOKUP, SUMIF, INDEX/MATCH and more, with instant checking. Plus a free Excel test for job interviews.",
   schema: [{ "@context": "https://schema.org", "@type": "WebSite", name: SITE.name, url: SITE.url }],
   body: `<div class="hero"><div>
-<div class="label">Free · No download · No sign-up</div>
-<h1 style="margin-top:10px">Practise Excel formulas in a <mark>real worksheet</mark>.</h1>
-<p class="lede">Type actual formulas, get them checked instantly, and walk into your Excel assessment knowing you can write VLOOKUP, SUMIF and INDEX/MATCH from memory.</p>
-<a class="btn primary" href="/excel-interview-test/">Take the interview test</a>
-<div class="stats"><div><b>${EX.exercises.length}</b><span class="label">formula exercises</span></div><div><b>${QS.length}</b><span class="label">interview questions</span></div><div><b>3</b><span class="label">skill levels</span></div></div>
-</div>${practiceBox("all")}</div>
-<section class="block"><h2>Formula exercises</h2><p class="sub">Each exercise teaches one function using the same sample sales sheet, from beginner to advanced.</p>${exCards(EX.exercises)}</section>
-<section class="block"><h2>Preparing for a job test?</h2><p class="sub">Employers test Excel with multiple-choice questions and hands-on tasks. Practise both.</p>${guideCards}</section>`,
+<div class="kicker label">Free Excel practice · No download · No sign-up</div>
+<h1 class="display">Write the <span class="hl">formula.</span><span class="serif">Land the job.</span></h1>
+<p class="lede">Most Excel tests are hands-on. So is this. Type real formulas into a live worksheet, get them checked instantly, and walk into your assessment already fluent in VLOOKUP, SUMIF and INDEX/MATCH.</p>
+<div class="ctas"><a class="btn primary" href="/practice/">Start practising <span class="arrow">→</span></a><a class="btn ghost" href="/excel-interview-test/">Take the interview test</a></div>
+<div class="figures"><div><b>${EX.exercises.length}</b><span class="label">Live exercises</span></div><div><b>${QS.length}</b><span class="label">Interview questions</span></div><div><b>$0</b><span class="label">To start</span></div></div>
+</div>${heroArt()}</div>
+${ticker()}
+<section class="block"><div class="sec-head"><h2>Try one <span class="serif">right now.</span></h2><p>A real worksheet, in your browser. Type a formula, press Check, and see exactly what Excel would show. Click any cell to drop its reference into the formula.</p></div>${practiceBox("all")}</section>
+<section class="block"><div class="sec-head"><h2>The functions <span class="serif">employers test.</span></h2><p>Fourteen exercises, from your first SUM to INDEX and MATCH. Each one teaches a single function on the same sample sales sheet.</p></div>${elements()}</section>
+<section class="block"><div class="band"><div><h2>Twenty questions. <span class="serif">No guessing.</span></h2><p>A free multiple-choice test modeled on employer Excel assessments: references, lookups, error codes, pivot tables. Every answer comes with the reason why.</p><a class="btn primary" href="/excel-interview-test/">Take the test <span class="arrow">→</span></a></div>
+<div><div class="stat"><b>20</b><span>questions with explanations</span></div><div class="stat"><b>80%</b><span>score to aim for before test day</span></div><div class="stat"><b>25%</b><span>what pure guessing gets you</span></div></div></div></section>
+<section class="block"><div class="sec-head"><h2>Before <span class="serif">test day.</span></h2><p>Short guides to what employer Excel assessments actually cover.</p></div>${guideCards}</section>`,
 });
 page("/practice/", {
   nav: "practice", practice: true,
@@ -131,7 +162,7 @@ page("/404.html", { title: "Page not found", description: "Page not found.", bod
 rmSync(OUT, { recursive: true, force: true });
 for (const p of pages) { const f = p.path.endsWith(".html") ? join(OUT, p.path) : join(OUT, p.path, "index.html"); mkdirSync(dirname(f), { recursive: true }); writeFileSync(f, layout(p)); }
 mkdirSync(join(OUT, "assets"), { recursive: true });
-for (const f of ["site.css", "formula.js", "practice.js", "quiz.js"]) copyFileSync(join(ROOT, "src/assets", f), join(OUT, "assets", f));
+for (const f of ["site.css", "formula.js", "practice.js", "quiz.js", "hero.js"]) copyFileSync(join(ROOT, "src/assets", f), join(OUT, "assets", f));
 writeFileSync(join(OUT, "favicon.svg"), LOGO.replace(/var\(--ink\)/g, "#1E2622").replace(/var\(--grid\)/g, "#D7DED9").replace(/var\(--active\)/g, "#FFF3BF").replace(/var\(--sel\)/g, "#1C7A4C").replace('<svg ', '<svg xmlns="http://www.w3.org/2000/svg" '));
 const today = new Date().toISOString().slice(0, 10);
 writeFileSync(join(OUT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages.filter((p) => !p.path.endsWith(".html")).map((p) => `<url><loc>${SITE.url}${p.path}</loc><lastmod>${today}</lastmod></url>`).join("\n")}\n</urlset>\n`);
