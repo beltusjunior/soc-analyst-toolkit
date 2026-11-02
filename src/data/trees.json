@@ -1,0 +1,424 @@
+{
+ "cold": {
+  "name": "Blowing cold air",
+  "start": "c1",
+  "n": {
+   "c1": {
+    "q": "Is the thermostat fan set to ON or AUTO?",
+    "help": "Look for a fan switch or menu on the thermostat.",
+    "c": [
+     [
+      "ON",
+      "c_fan"
+     ],
+     [
+      "AUTO",
+      "c2"
+     ],
+     [
+      "Not sure",
+      "c_fan"
+     ]
+    ]
+   },
+   "c_fan": {
+    "t": "diy",
+    "h": "Set the fan to AUTO",
+    "steps": [
+     "With the fan on ON, the blower runs nonstop, including between heating cycles, so you feel room-temperature air.",
+     "Switch the fan to AUTO. The blower will then run only while the burners are heating.",
+     "If the air is still cold during a heating cycle, run the troubleshooter again with the fan on AUTO."
+    ],
+    "time": "1 minute",
+    "cost": "$0"
+   },
+   "c2": {
+    "q": "When was the air filter last changed?",
+    "help": "The filter slides into a slot near the blower or in a return-air grille.",
+    "c": [
+     [
+      "Over 3 months ago, or it looks grey",
+      "c_filter"
+     ],
+     [
+      "Recently, and it looks clean",
+      "c3"
+     ]
+    ]
+   },
+   "c_filter": {
+    "t": "diy",
+    "h": "Replace the air filter",
+    "steps": [
+     "Turn the furnace off at the thermostat.",
+     "Slide out the old filter and note the size printed on its edge (for example 16x25x1).",
+     "Insert the new filter with the airflow arrow pointing toward the furnace.",
+     "Turn the heat back on. A clogged filter makes the furnace overheat, and a safety switch then shuts off the burners while the blower keeps pushing unheated air."
+    ],
+    "time": "5 minutes",
+    "cost": "$8–25"
+   },
+   "c3": {
+    "q": "Watch the burners through the viewing window. What happens when heat is called?",
+    "help": "Most furnaces have a small window or gap in the front panel.",
+    "c": [
+     [
+      "Flame lights, then goes out within a few seconds",
+      "c_sensor"
+     ],
+     [
+      "No flame at all",
+      "c4"
+     ],
+     [
+      "Flame stays lit, air is still cold",
+      "c_duct"
+     ]
+    ]
+   },
+   "c_sensor": {
+    "t": "diy",
+    "h": "Clean the flame sensor",
+    "steps": [
+     "Turn off power to the furnace at its service switch and shut the gas valve.",
+     "Remove the burner panel. The flame sensor is a thin metal rod in front of the burners, held by one screw.",
+     "Remove it and gently rub the rod with fine steel wool or a fine abrasive pad until it shines. Do not use sandpaper.",
+     "Reinstall it, restore gas and power, and test. If it keeps happening, the sensor or its wiring needs replacing."
+    ],
+    "time": "20 minutes",
+    "cost": "$0–20"
+   },
+   "c4": {
+    "q": "Is the furnace's status light blinking a code?",
+    "help": "Look through the small window on the lower blower panel for a red or green LED.",
+    "c": [
+     [
+      "Yes, it is blinking a pattern",
+      "c_code"
+     ],
+     [
+      "No light, or steady light",
+      "c_pro"
+     ]
+    ]
+   },
+   "c_code": {
+    "t": "pro",
+    "h": "Read the error code, then decide",
+    "steps": [
+     "Count the blinks and match them to the code chart on the inside of the furnace door.",
+     "Codes for pressure switch, ignition lockout or limit switch faults usually point to a blocked vent, a clogged condensate drain or a failed part.",
+     "Clear any snow or debris from outside vent pipes. If the code returns, call a technician and tell them the code."
+    ],
+    "time": "10 minutes to read",
+    "cost": "$150–450 if a part is replaced"
+   },
+   "c_duct": {
+    "t": "pro",
+    "h": "Possible duct or heat exchanger problem",
+    "steps": [
+     "If the burners stay lit but the air stays cold, heat may not be reaching the vents. Check for disconnected ducts in an unfinished basement or attic.",
+     "Weak heat with the flame running can also mean a cracked heat exchanger, which can leak carbon monoxide.",
+     "Make sure your CO detector works and have a technician inspect the furnace."
+    ],
+    "time": "Technician visit",
+    "cost": "$100–200 diagnostic"
+   },
+   "c_pro": {
+    "t": "pro",
+    "h": "Call a technician",
+    "steps": [
+     "No flame and no error code usually means a failed igniter, gas valve or control board.",
+     "Check that the gas valve next to the furnace is turned on (handle parallel to the pipe).",
+     "If it is on, schedule a technician. These parts involve gas and high voltage."
+    ],
+    "time": "Technician visit",
+    "cost": "$150–600"
+   }
+  }
+ },
+ "off": {
+  "name": "Not turning on",
+  "start": "o1",
+  "n": {
+   "o1": {
+    "q": "Is the thermostat set to HEAT and above room temperature, with a working display?",
+    "help": "A blank display usually means dead batteries.",
+    "c": [
+     [
+      "The display is blank",
+      "o_batt"
+     ],
+     [
+      "It's set correctly",
+      "o2"
+     ],
+     [
+      "It was set to OFF or COOL",
+      "o_set"
+     ]
+    ]
+   },
+   "o_batt": {
+    "t": "diy",
+    "h": "Replace the thermostat batteries",
+    "steps": [
+     "Pull the thermostat off its wall plate or open the battery door.",
+     "Replace the batteries (usually AA or AAA).",
+     "Set it to HEAT, a few degrees above room temperature, and wait five minutes."
+    ],
+    "time": "5 minutes",
+    "cost": "$5"
+   },
+   "o_set": {
+    "t": "diy",
+    "h": "Set the thermostat to HEAT",
+    "steps": [
+     "Switch the mode to HEAT.",
+     "Set the temperature at least 3 degrees above the current room temperature.",
+     "Some thermostats wait up to five minutes before starting the furnace to protect the equipment."
+    ],
+    "time": "1 minute",
+    "cost": "$0"
+   },
+   "o2": {
+    "q": "Check the furnace power switch (it looks like a light switch on or near the furnace) and the breaker.",
+    "help": "People often switch it off by mistake, thinking it's a light.",
+    "c": [
+     [
+      "The switch or breaker was off",
+      "o_power"
+     ],
+     [
+      "Both are on",
+      "o3"
+     ]
+    ]
+   },
+   "o_power": {
+    "t": "diy",
+    "h": "Restore power",
+    "steps": [
+     "Turn the furnace switch on, or reset the breaker in your electrical panel.",
+     "If the breaker trips again right away, leave it off and call a technician. That points to an electrical fault."
+    ],
+    "time": "2 minutes",
+    "cost": "$0"
+   },
+   "o3": {
+    "q": "Is the front blower panel fully closed?",
+    "help": "Furnaces have a safety switch that cuts power when the lower door is not seated.",
+    "c": [
+     [
+      "It was loose or off",
+      "o_door"
+     ],
+     [
+      "It's closed tight",
+      "o4"
+     ]
+    ]
+   },
+   "o_door": {
+    "t": "diy",
+    "h": "Reseat the blower door",
+    "steps": [
+     "Line up the panel and press it firmly until it clicks into place. This pushes the door safety switch closed.",
+     "Wait a minute for the furnace to restart its sequence."
+    ],
+    "time": "1 minute",
+    "cost": "$0"
+   },
+   "o4": {
+    "q": "Is the status light on the control board blinking?",
+    "help": "Look through the small window on the lower panel.",
+    "c": [
+     [
+      "Yes, blinking a code",
+      "o_code"
+     ],
+     [
+      "No light at all",
+      "o_pro"
+     ]
+    ]
+   },
+   "o_code": {
+    "t": "pro",
+    "h": "Match the error code",
+    "steps": [
+     "Count the blinks and find the code on the chart inside the furnace door.",
+     "A high-efficiency furnace often shuts down when the condensate drain clogs. Check that the drain line is not blocked.",
+     "For ignition, pressure switch or limit codes that keep coming back, call a technician with the code."
+    ],
+    "time": "10 minutes",
+    "cost": "$150–450 if a part is replaced"
+   },
+   "o_pro": {
+    "t": "pro",
+    "h": "Call a technician",
+    "steps": [
+     "With power on and no light on the control board, the transformer, a fuse on the board or the board itself may have failed.",
+     "This involves 120-volt wiring. Schedule a technician."
+    ],
+    "time": "Technician visit",
+    "cost": "$150–500"
+   }
+  }
+ },
+ "leak": {
+  "name": "Leaking water",
+  "start": "l1",
+  "n": {
+   "l1": {
+    "q": "Is it leaking while the air conditioning runs, or while the heat runs?",
+    "help": "Your AC coil usually sits on top of the furnace.",
+    "c": [
+     [
+      "While the AC is on",
+      "l_ac"
+     ],
+     [
+      "While the heat is on",
+      "l2"
+     ]
+    ]
+   },
+   "l_ac": {
+    "t": "diy",
+    "h": "Clear the AC condensate drain",
+    "steps": [
+     "The cooling coil above the furnace drips water into a pan and out through a drain line. A clog makes the pan overflow onto the furnace.",
+     "Turn off the system. Find the PVC drain line and its cleanout cap.",
+     "Pour a cup of distilled vinegar into the cleanout, or use a wet/dry vacuum on the outside end of the line to pull the clog out.",
+     "If the drain pan itself is cracked or rusted through, call a technician."
+    ],
+    "time": "20 minutes",
+    "cost": "$0–15"
+   },
+   "l2": {
+    "q": "Does your furnace have white plastic (PVC) vent pipes?",
+    "help": "PVC pipes mean a high-efficiency condensing furnace. Metal pipes mean a standard-efficiency furnace.",
+    "c": [
+     [
+      "Yes, PVC pipes",
+      "l_cond"
+     ],
+     [
+      "No, metal flue pipe",
+      "l_flue"
+     ]
+    ]
+   },
+   "l_cond": {
+    "t": "diy",
+    "h": "Check the condensate trap and pump",
+    "steps": [
+     "High-efficiency furnaces make water as they run, and it drains through a trap and hose, sometimes into a small pump.",
+     "Turn off power. Look for a disconnected, cracked or clogged hose and reconnect or flush it.",
+     "If you have a condensate pump, check that its float moves freely and the pump runs when you lift the float. Pumps cost $50–80 to replace.",
+     "If the water is coming from a joint in the vent pipe, call a technician."
+    ],
+    "time": "30 minutes",
+    "cost": "$0–80"
+   },
+   "l_flue": {
+    "t": "stop",
+    "h": "Call a technician soon",
+    "steps": [
+     "A standard furnace with a metal flue should not produce water. Leaking can mean exhaust is condensing in a poorly vented flue.",
+     "Poor venting can push carbon monoxide into your home.",
+     "Check that your CO detectors work, and schedule an inspection."
+    ],
+    "time": "Technician visit",
+    "cost": "$100–200 diagnostic"
+   }
+  }
+ },
+ "noise": {
+  "name": "Making loud noises",
+  "start": "n1",
+  "n": {
+   "n1": {
+    "q": "What does the noise sound like?",
+    "help": "Listen right after the furnace starts and while it runs.",
+    "c": [
+     [
+      "A loud bang or boom when it starts",
+      "n_bang"
+     ],
+     [
+      "Squealing or screeching",
+      "n_squeal"
+     ],
+     [
+      "Rattling or vibrating",
+      "n_rattle"
+     ],
+     [
+      "Metal scraping",
+      "n_scrape"
+     ],
+     [
+      "Whistling",
+      "n_whistle"
+     ]
+    ]
+   },
+   "n_bang": {
+    "t": "stop",
+    "h": "Turn the furnace off and call a technician",
+    "steps": [
+     "A boom at startup usually means delayed ignition. Gas builds up before it lights, often because the burners are dirty.",
+     "Repeated delayed ignition can crack the heat exchanger.",
+     "Turn the furnace off at the thermostat and have the burners serviced before using it again."
+    ],
+    "time": "Technician visit",
+    "cost": "$100–300"
+   },
+   "n_squeal": {
+    "t": "pro",
+    "h": "Blower belt or motor bearings",
+    "steps": [
+     "Older furnaces use a belt that can slip or wear out. Newer direct-drive blowers squeal when motor bearings fail.",
+     "Turn off power and look at the blower. A cracked or loose belt can be replaced for a few dollars.",
+     "A failing motor needs a technician."
+    ],
+    "time": "15 minutes to check",
+    "cost": "$10–500"
+   },
+   "n_rattle": {
+    "t": "diy",
+    "h": "Tighten loose panels and screws",
+    "steps": [
+     "Turn off power and check that every access panel is seated and its screws are tight.",
+     "Look at ductwork connections near the furnace for loose sheet-metal screws.",
+     "If the rattle comes from inside the blower compartment, call a technician."
+    ],
+    "time": "15 minutes",
+    "cost": "$0"
+   },
+   "n_scrape": {
+    "t": "stop",
+    "h": "Turn it off now",
+    "steps": [
+     "Metal on metal usually means the blower wheel has come loose or broken and is hitting its housing.",
+     "Running it can destroy the motor. Turn the furnace off and call a technician."
+    ],
+    "time": "Technician visit",
+    "cost": "$150–600"
+   },
+   "n_whistle": {
+    "t": "diy",
+    "h": "Fix restricted airflow",
+    "steps": [
+     "Whistling usually means the furnace is starving for air.",
+     "Replace the filter, and make sure the filter slot cover is in place.",
+     "Open closed supply vents and clear furniture off return-air grilles."
+    ],
+    "time": "10 minutes",
+    "cost": "$8–25"
+   }
+  }
+ }
+}
