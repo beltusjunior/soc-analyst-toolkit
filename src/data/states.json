@@ -1,0 +1,64 @@
+{
+ "detailed": [
+  {
+   "slug": "florida", "name": "Florida", "requirement": "Born on or after Jan 1, 1988",
+   "summary": "Florida requires boater education for anyone born on or after January 1, 1988, who operates a motorboat of 10 horsepower or more. You pass an approved course and exam, then carry your Boating Safety Education ID Card from the Florida Fish and Wildlife Conservation Commission (FWC).",
+   "facts": [
+    ["Who needs it", "Anyone born on or after January 1, 1988, operating a motorboat of 10 horsepower or more. This includes nonresidents."],
+    ["What you get", "A Boating Safety Education Identification Card issued by the FWC."],
+    ["How to qualify", "Complete an FWC-approved boating safety course and pass its exam, online or in a classroom."],
+    ["Carry it", "You must carry the card and a photo ID while operating."],
+    ["New boat owners", "A person who operates a boat within 90 days of buying it does not need the card if a bill of sale meeting Florida law is aboard."],
+    ["Agency", "Florida Fish and Wildlife Conservation Commission (FWC)"]
+   ],
+   "steps": ["Check whether you were born on or after January 1, 1988, and will operate a motorboat of 10 horsepower or more.", "Choose an FWC-approved boating safety course, online or in person.", "Study the course and pass the final exam.", "Get your Boating Safety Education ID Card from the FWC.", "Carry the card and a photo ID whenever you operate a boat."],
+   "faq": [["Do I need a boating license in Florida?", "Florida does not issue a boating license. If you were born on or after January 1, 1988, you need a Boating Safety Education ID Card to operate a motorboat of 10 horsepower or more."], ["Does the requirement apply to visitors?", "Yes. Nonresidents born on or after January 1, 1988, need the card or an approved equivalent. Check the FWC FAQ for which out-of-state certificates are accepted."], ["Do I need the card for a kayak?", "No. The requirement applies to motorboats of 10 horsepower or more."]],
+   "sources": [["FWC, FAQs About Boating Safety Education Requirements", "https://myfwc.com/boating/safety-education/faqs"]]
+  },
+  {
+   "slug": "tennessee", "name": "Tennessee", "requirement": "Born after Jan 1, 1989",
+   "summary": "Tennessee residents born after January 1, 1989, must pass the Tennessee Wildlife Resources Agency (TWRA) boating safety exam before operating a motorized vessel over 8.5 horsepower.",
+   "facts": [
+    ["Who needs it", "Tennessee residents born after January 1, 1989, operating a motorized vessel over 8.5 horsepower."],
+    ["How to qualify", "Buy the TWRA exam permit, then pass the boating safety exam online or through an instructor-led class."],
+    ["Visitors", "TWRA accepts NASBLA-approved boating safety certificates from other states."],
+    ["Rentals", "There is no exemption for people renting a boat."],
+    ["Supervising adults", "A supervising adult must be over 18 and either born on or before January 1, 1989, or hold a boater education certificate."],
+    ["Agency", "Tennessee Wildlife Resources Agency (TWRA)"]
+   ],
+   "steps": ["Check whether you were born after January 1, 1989, and will operate a vessel over 8.5 horsepower.", "Buy the TWRA boating safety exam permit online or from a license agent.", "Study the Tennessee boating handbook or take an instructor-led class.", "Pass the boating safety exam online or in class.", "Carry your certificate when you operate a boat."],
+   "faq": [["Do I need a boating license in Tennessee?", "If you were born after January 1, 1989, you need a TWRA boater education certificate to operate a motorized vessel over 8.5 horsepower."], ["Does it apply if I rent a boat?", "Yes. Tennessee removed the rental exemption, so renters need the certificate too."], ["Can I use my certificate from another state?", "Yes. TWRA accepts NASBLA-approved boating safety certificates from other states."]],
+   "sources": [["TWRA, Boating Safety Education", "https://www.tn.gov/twra/boating/boating-education.html"], ["Tenn. Comp. R. & Regs. 1660-02-12-.01", "https://www.law.cornell.edu/regulations/tennessee/Tenn-Comp-R-Regs-1660-02-12-.01"]]
+  },
+  {
+   "slug": "michigan", "name": "Michigan", "requirement": "Born after June 30, 1996",
+   "summary": "Michigan requires a boating safety certificate for operators born after June 30, 1996, and for most personal watercraft operators. Courses are available online or in a classroom.",
+   "facts": [
+    ["Motorboats", "Operators born after June 30, 1996, need a boating safety certificate."],
+    ["Personal watercraft", "Most PWC operators need a certificate, with age-based rules for younger riders. Check the Michigan DNR for current PWC age limits."],
+    ["How to qualify", "Complete an approved boating safety course online or in a classroom and pass its exam."],
+    ["Proof", "You can look up your certificate number and print a copy through the DNR eLicense system."],
+    ["Agency", "Michigan Department of Natural Resources (DNR)"]
+   ],
+   "steps": ["Check whether you were born after June 30, 1996, or plan to operate a personal watercraft.", "Choose an approved boating safety course, online or in a classroom.", "Pass the course exam.", "Carry your boating safety certificate when operating."],
+   "faq": [["Do I need a boating license in Michigan?", "Michigan requires a boating safety certificate rather than a license, for operators born after June 30, 1996, and most personal watercraft operators."], ["I lost my certificate. How do I get a copy?", "Look up your certificate number and print a copy through the Michigan DNR eLicense system."], ["Are there age limits for jet skis?", "Yes. Michigan has age-based rules for personal watercraft operators. Check the DNR's current rules before letting a young rider operate one."]],
+   "sources": [["Michigan DNR, Boating Safety Certificate", "https://michigan.gov/dnr/things-to-do/boating/safety-certificate"]]
+  },
+  {
+   "slug": "texas", "name": "Texas", "requirement": "Born on or after Sept 1, 1993",
+   "summary": "Texas requires a Texas Parks and Wildlife Department (TPWD) certified boater education course for anyone born on or after September 1, 1993, who operates a boat with a motor over 15 horsepower, a sailboat over 14 feet, or a personal watercraft.",
+   "facts": [
+    ["Who needs it", "Anyone born on or after September 1, 1993, operating a vessel with a motor over 15 horsepower, a wind-blown vessel over 14 feet, or a personal watercraft."],
+    ["How to qualify", "Complete a TPWD-certified boater education course, online or in a classroom."],
+    ["Carry it", "You need your course certificate and a valid photo ID while operating."],
+    ["Accompanied minors", "An operator who has not taken the course may operate if accompanied by someone 18 or older who meets the education requirement or is exempt by age."],
+    ["Visitors", "Nonresidents may use a NASBLA-approved boater education certificate from their home state."],
+    ["Agency", "Texas Parks and Wildlife Department (TPWD)"]
+   ],
+   "steps": ["Check whether you were born on or after September 1, 1993, and will operate a covered vessel.", "Choose a TPWD-certified boater education course, online or in a classroom.", "Pass the course exam.", "Carry your certificate and photo ID whenever you operate."],
+   "faq": [["Do I need a boating license in Texas?", "Texas requires boater education, not a license, for operators born on or after September 1, 1993, who run a boat over 15 horsepower, a sailboat over 14 feet or a personal watercraft."], ["Can someone without the course drive if I'm on board?", "Yes, if the person accompanying them is 18 or older and meets the education requirement or is exempt by age."], ["Is my out-of-state card valid in Texas?", "Yes, if it is a NASBLA-approved boater education certificate from your home state."]],
+   "sources": [["TPWD, Mandatory Boater Education", "https://tpwd.texas.gov/regulations/outdoor-annual/boating/mandatory-boater-education-requirements"], ["Texas Parks and Wildlife Code §31.109", "https://law.justia.com/codes/texas/parks-and-wildlife-code/title-4/chapter-31/subchapter-d/section-31-109"]]
+  }
+ ],
+ "all": ["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]
+}
