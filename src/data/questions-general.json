@@ -2,133 +2,133 @@
  {
   "q": "What is the main purpose of a notarization?",
   "o": [
-   "To make a document legally binding",
-   "To verify the signer's identity and that they are signing willingly",
    "To confirm the document's contents are true",
-   "To give the document an official government approval"
+   "To give the document an official government approval",
+   "To verify the signer's identity and that they are signing willingly",
+   "To make a document legally binding"
   ],
-  "a": 1,
+  "a": 2,
   "e": "A notary is an impartial witness. The job is to deter fraud by confirming who the signer is and that they sign willingly and knowingly. The notary does not vouch for what the document says."
  },
  {
   "q": "In an acknowledgment, the signer declares to the notary that they:",
   "o": [
-   "Swear the contents are true",
    "Signed the document voluntarily",
+   "Will sign the document later",
    "Read and understood every page with the notary",
-   "Will sign the document later"
+   "Swear the contents are true"
   ],
-  "a": 1,
+  "a": 0,
   "e": "An acknowledgment is the signer's declaration that the signature is theirs and was made voluntarily. The signer must appear in person, but in most states may have signed beforehand."
  },
  {
   "q": "Which notarial act requires the signer to sign in the notary's presence and swear or affirm that the contents are true?",
   "o": [
-   "Acknowledgment",
-   "Jurat",
    "Copy certification",
-   "Apostille"
+   "Acknowledgment",
+   "Apostille",
+   "Jurat"
   ],
-  "a": 1,
+  "a": 3,
   "e": "A jurat requires the signature to be made in front of the notary, plus an oath or affirmation about the truth of the contents."
  },
  {
   "q": "How does an affirmation differ from an oath?",
   "o": [
-   "It is not legally binding",
    "It is a solemn pledge made without reference to a deity",
    "It can only be given in writing",
-   "It is only used for real estate documents"
+   "It is only used for real estate documents",
+   "It is not legally binding"
   ],
-  "a": 1,
+  "a": 0,
   "e": "An affirmation carries the same legal weight as an oath. It simply makes no reference to a supreme being, for signers who prefer not to swear."
  },
  {
   "q": "A notary is asked to notarize their own signature on a car title. What should they do?",
   "o": [
-   "Notarize it, since they know their own identity",
    "Notarize it if a witness is present",
    "Refuse. A notary cannot notarize their own signature",
-   "Notarize it and note the conflict in the journal"
+   "Notarize it and note the conflict in the journal",
+   "Notarize it, since they know their own identity"
   ],
-  "a": 2,
+  "a": 1,
   "e": "Notarizing your own signature is a direct conflict of interest and is prohibited."
  },
  {
   "q": "A signer asks you which notarial certificate their document needs. You are not an attorney. What is the correct response?",
   "o": [
-   "Choose the one you use most often",
-   "Pick a jurat, because it is the safest",
+   "Attach both an acknowledgment and a jurat",
    "Explain that you cannot choose for them, and refer them to the document's issuer or an attorney",
-   "Attach both an acknowledgment and a jurat"
+   "Choose the one you use most often",
+   "Pick a jurat, because it is the safest"
   ],
-  "a": 2,
+  "a": 1,
   "e": "Choosing the type of notarization for someone is giving legal advice. Non-attorney notaries must let the signer, the receiving agency or an attorney decide."
  },
  {
   "q": "A document presented for notarization has several blank spaces. What should you do?",
   "o": [
-   "Notarize it. Blanks are the signer's responsibility",
    "Fill in the blanks with N/A yourself",
-   "Ask the signer to fill in or strike through the blanks before you notarize",
-   "Notarize only the pages without blanks"
+   "Notarize it. Blanks are the signer's responsibility",
+   "Notarize only the pages without blanks",
+   "Ask the signer to fill in or strike through the blanks before you notarize"
   ],
-  "a": 2,
+  "a": 3,
   "e": "Blank spaces invite fraud after the fact. The signer should complete them or line them out before the notarization."
  },
  {
   "q": "A client calls and asks you to notarize a document they will sign at home while you listen on the phone. Can you?",
   "o": [
+   "No. The signer must personally appear before the notary",
    "Yes, if you recognize their voice",
    "Yes, if they send a photo of their ID",
-   "No. The signer must personally appear before the notary",
    "Yes, if a family member witnesses"
   ],
-  "a": 2,
+  "a": 0,
   "e": "Traditional notarization requires physical personal appearance. Remote online notarization is a separate process that uses live audio-video and is only allowed where state law authorizes it."
  },
  {
   "q": "Which item is generally accepted as satisfactory evidence of a signer's identity?",
   "o": [
-   "A utility bill with their name",
-   "A current government-issued photo ID",
    "A credit card with their signature",
-   "A business card"
+   "A business card",
+   "A utility bill with their name",
+   "A current government-issued photo ID"
   ],
-  "a": 1,
+  "a": 3,
   "e": "States generally require a current, government-issued ID with a photo, physical description and signature, such as a driver's license or passport."
  },
  {
   "q": "What is a credible witness?",
   "o": [
-   "Anyone who watches the signing",
    "A person who personally knows the signer and vouches for their identity under oath",
-   "A second notary",
-   "The person who prepared the document"
+   "Anyone who watches the signing",
+   "The person who prepared the document",
+   "A second notary"
   ],
-  "a": 1,
+  "a": 0,
   "e": "When a signer has no acceptable ID, many states allow a credible witness who personally knows them to identify them under oath. Rules on how many witnesses and who qualifies vary by state."
  },
  {
   "q": "In a notarial certificate, the venue states:",
   "o": [
-   "Where the signer lives",
    "Where the document will be filed",
    "The state and county where the notarization took place",
-   "The notary's business address"
+   "The notary's business address",
+   "Where the signer lives"
   ],
-  "a": 2,
+  "a": 1,
   "e": "The venue records the location of the notarization itself, usually written as State of ___, County of ___."
  },
  {
   "q": "What is the main purpose of a notary journal?",
   "o": [
-   "To track the notary's income for taxes",
    "To keep a record of notarial acts that can serve as evidence later",
-   "To store copies of every document notarized",
-   "To list the notary's regular customers"
+   "To track the notary's income for taxes",
+   "To list the notary's regular customers",
+   "To store copies of every document notarized"
   ],
-  "a": 1,
+  "a": 0,
   "e": "The journal is a chronological record of each notarial act. It protects the public and the notary if a notarization is later challenged. Some states require one, and all recommend it."
  },
  {
@@ -136,30 +136,30 @@
   "o": [
    "Proceed. It is not your job to judge",
    "Ask a relative to explain it for them",
-   "Refuse to notarize, because you cannot confirm they are signing knowingly and willingly",
-   "Notarize it but add a note to the certificate"
+   "Notarize it but add a note to the certificate",
+   "Refuse to notarize, because you cannot confirm they are signing knowingly and willingly"
   ],
-  "a": 2,
+  "a": 3,
   "e": "A notary must be satisfied that the signer understands what they are signing and is doing so willingly. If you have real doubt, decline."
  },
  {
   "q": "You are named as a beneficiary in a will that a client wants notarized. What should you do?",
   "o": [
    "Notarize it. Being a beneficiary is not a conflict",
-   "Notarize it if you disclose the interest",
    "Decline, because you have a financial interest in the document",
-   "Ask the client for permission first"
+   "Ask the client for permission first",
+   "Notarize it if you disclose the interest"
   ],
-  "a": 2,
+  "a": 1,
   "e": "A notary must not notarize a document in which they have a financial or beneficial interest. It destroys their impartiality."
  },
  {
   "q": "A client asks you to certify a copy of their birth certificate. What is the correct response?",
   "o": [
-   "Certify it if the original is presented",
+   "Certify it if they sign an affidavit",
    "Certify it with a jurat",
    "Decline, and refer them to the vital records office that issued it",
-   "Certify it if they sign an affidavit"
+   "Certify it if the original is presented"
   ],
   "a": 2,
   "e": "Certified copies of vital records such as birth, death and marriage certificates come from the issuing government agency, not from a notary."
@@ -167,8 +167,8 @@
  {
   "q": "Who issues an apostille?",
   "o": [
-   "Any commissioned notary",
    "The county clerk of the signer's county",
+   "Any commissioned notary",
    "A designated state official, usually the Secretary of State",
    "A U.S. embassy abroad"
   ],
@@ -178,21 +178,21 @@
  {
   "q": "Who does a notary's surety bond primarily protect?",
   "o": [
-   "The notary",
    "The notary's employer",
-   "The public, against financial harm caused by the notary's misconduct or errors",
-   "The state commissioning office"
+   "The notary",
+   "The state commissioning office",
+   "The public, against financial harm caused by the notary's misconduct or errors"
   ],
-  "a": 2,
+  "a": 3,
   "e": "The bond compensates members of the public harmed by a notary's errors or misconduct. The notary must usually repay the bonding company. Errors and omissions insurance is what protects the notary."
  },
  {
   "q": "Your commission expired yesterday and your renewal has not been approved yet. A client needs a quick notarization. What should you do?",
   "o": [
    "Notarize it, since the renewal is pending",
-   "Notarize it and backdate the certificate",
+   "Use a colleague's stamp",
    "Decline until the new commission takes effect",
-   "Use a colleague's stamp"
+   "Notarize it and backdate the certificate"
   ],
   "a": 2,
   "e": "A notary has no authority to act once the commission expires. Acts performed without a valid commission can be void and can bring penalties."
@@ -200,21 +200,21 @@
  {
   "q": "How should a notary handle their official seal or stamp?",
   "o": [
-   "Leave it at the office for coworkers to use",
-   "Keep it secure and under their exclusive control",
    "Lend it to another notary in an emergency",
-   "Store it with the employer's supplies"
+   "Store it with the employer's supplies",
+   "Keep it secure and under their exclusive control",
+   "Leave it at the office for coworkers to use"
   ],
-  "a": 1,
+  "a": 2,
   "e": "The seal identifies the notary. It must stay under the notary's exclusive control, and its loss or theft usually has to be reported to the commissioning office."
  },
  {
   "q": "Which statement about notary fees is correct?",
   "o": [
-   "Notaries may charge whatever the market will bear",
+   "Fees are set by the county clerk for each document",
    "Fees for the notarial act itself may not exceed the maximum set by state law",
    "Notaries must always notarize for free",
-   "Fees are set by the county clerk for each document"
+   "Notaries may charge whatever the market will bear"
   ],
   "a": 1,
   "e": "States set a maximum fee per notarial act, and many require the fee to be recorded in the journal. Travel fees, where allowed, are handled separately."
