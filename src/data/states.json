@@ -1,0 +1,138 @@
+{
+ "detailed": [
+  {
+   "slug": "california",
+   "name": "California",
+   "abbr": "CA",
+   "requirement": "Course and exam",
+   "summary": "California has one of the strictest notary processes in the country: a six-hour approved course, a proctored state exam, a background check, a $15,000 bond, and filing your oath with the county clerk.",
+   "facts": [
+    ["Education", "Six-hour course from a state-approved vendor for new notaries. Renewing notaries with a current commission may take a three-hour refresher instead."],
+    ["Exam", "Proctored, closed-book, multiple-choice exam of 45 questions with a 60-minute time limit, administered for the Secretary of State by CPS HR Consulting."],
+    ["Background check", "Live Scan fingerprinting is required."],
+    ["Bond", "$15,000 surety bond, filed with the county clerk along with your oath within 30 days of the commission start date."],
+    ["Commission term", "4 years"],
+    ["Maximum fee", "$15 per signature for an acknowledgment or jurat"],
+    ["Fees", "Exam and application fees are set by the Secretary of State. See the official fee schedule before you apply."]
+   ],
+   "steps": [
+    "Confirm you meet the basic requirements: at least 18 and a California resident.",
+    "Complete a six-hour notary education course from a state-approved vendor and keep your certificate of completion.",
+    "Register for and pass the state notary exam. Bring your course certificate, photo ID and a 2x2 passport-style photo.",
+    "Get Live Scan fingerprints for the background check.",
+    "Wait for your commission certificate from the Secretary of State.",
+    "Buy your $15,000 surety bond, then file your bond and oath of office with your county clerk within 30 days of the commission start date.",
+    "Order your official seal and a sequential journal, and start notarizing."
+   ],
+   "faq": [
+    ["How long does it take to become a notary in California?", "Most applicants finish in six to twelve weeks. The longest waits are usually for an exam date and for the background check results."],
+    ["Do I need a thumbprint in my journal?", "Yes, for deeds and other documents affecting real property and for powers of attorney. The signer's right thumbprint goes in your journal entry."],
+    ["Can a California notary certify a copy of a birth certificate?", "No. California notaries can only certify copies of powers of attorney and entries in their own journal. Birth certificates come from the county recorder or the state vital records office."]
+   ],
+   "sources": [
+    ["California Secretary of State, Notary Public Handbook", "https://notary.cdn.sos.ca.gov/forms/notary-handbook-current.pdf"],
+    ["California Secretary of State, Notary Public section", "https://www.sos.ca.gov/notary"]
+   ],
+   "test": "california"
+  },
+  {
+   "slug": "new-york",
+   "name": "New York",
+   "abbr": "NY",
+   "requirement": "Exam required",
+   "summary": "New York requires a written exam on the Notary Public License Law, then an application to the Department of State. There is no mandatory course, so most people study on their own.",
+   "facts": [
+    ["Education", "No course is required. The exam is based on the Department of State's Notary Public License Law booklet."],
+    ["Exam", "Multiple-choice exam with a one-hour time limit. Results are reported as pass or fail, without a numerical score."],
+    ["Exam fee", "$15, paid to the Department of State"],
+    ["Application fee", "$60, paid to the Department of State"],
+    ["Exam results valid", "2 years from the exam date"],
+    ["Exemptions", "New York attorneys and court clerks of the Unified Court System do not take the exam."],
+    ["Languages", "The exam is also offered in Spanish, Haitian-Creole, Italian, Korean, Russian and Chinese."]
+   ],
+   "steps": [
+    "Confirm eligibility: at least 18, and a New York resident or someone with an office or place of business in the state.",
+    "Study the Notary Public License Law booklet from the Department of State.",
+    "Take the written exam at a scheduled or walk-in session and pay the $15 fee.",
+    "After passing, submit your application with the $60 fee within two years of the exam date.",
+    "Receive your commission and, if you choose, order a notary stamp. New York does not require an official seal."
+   ],
+   "faq": [
+    ["Is there a passing score for the New York notary exam?", "The Department of State reports results as pass or fail only. It does not publish a numerical passing score."],
+    ["Do I need to take a class?", "No. A class can help you prepare, but New York does not require one."],
+    ["Can I take the exam in another language?", "Yes. The exam is offered in several languages, including Spanish and Chinese. Check the current exam schedule for availability."]
+   ],
+   "sources": [
+    ["New York Department of State, Become a Notary Public", "https://dos.ny.gov/become-notary-public"],
+    ["New York Department of State, Notary Public Application Guidance (May 2026)", "https://dos.ny.gov/system/files/documents/2026/06/notary-public-application-guidance-05.2026.pdf"]
+   ],
+   "test": "general"
+  },
+  {
+   "slug": "pennsylvania",
+   "name": "Pennsylvania",
+   "abbr": "PA",
+   "requirement": "Course and exam",
+   "summary": "Pennsylvania notaries must complete a three-hour approved course, and first-time applicants must pass a state exam given by Pearson VUE. The state's notary law is the Revised Uniform Law on Notarial Acts (RULONA).",
+   "facts": [
+    ["Education", "Three-hour course approved by the Department of State, completed within the six months before you apply."],
+    ["Exam", "Required for first-time applicants, administered by Pearson VUE. Renewing notaries who reapply before their commission expires are exempt."],
+    ["Exam fee", "$65 per attempt, paid to Pearson VUE"],
+    ["Application fee", "$42, paid to the Department of State"],
+    ["Governing law", "Revised Uniform Law on Notarial Acts (RULONA)"],
+    ["Passing score and format", "Check the current Pearson VUE candidate handbook. Third-party sources report a scaled passing score of 75."]
+   ],
+   "steps": [
+    "Confirm eligibility: at least 18, and a Pennsylvania resident or employed in the state.",
+    "Complete a three-hour approved notary education course.",
+    "Register with Pearson VUE and pass the state exam.",
+    "Submit your application and $42 fee to the Department of State within six months of finishing your course.",
+    "Once approved, obtain your bond, take your oath, and record your commission with the recorder of deeds in your county.",
+    "Order your official stamp and a journal before your first notarization."
+   ],
+   "faq": [
+    ["Do I have to retake the exam when I renew?", "Not if you reapply before your current commission expires. You still need to complete the three-hour course."],
+    ["Who administers the Pennsylvania notary exam?", "Pearson VUE, on behalf of the Department of State."],
+    ["Does Pennsylvania require a journal?", "Yes. Pennsylvania notaries must keep a journal of their notarial acts."]
+   ],
+   "sources": [
+    ["Pennsylvania Department of State, Notaries", "https://www.pa.gov/agencies/dos/programs/notaries"]
+   ],
+   "test": "general"
+  },
+  {
+   "slug": "north-carolina",
+   "name": "North Carolina",
+   "abbr": "NC",
+   "requirement": "Course and exam",
+   "summary": "North Carolina requires a classroom course of at least six hours and a written exam, followed by an application to the Secretary of State. You must also keep a current copy of the state notary manual.",
+   "facts": [
+    ["Education", "Classroom course of at least six hours approved by the Secretary of State, taken within the three months before you apply. Courses are usually offered through community colleges."],
+    ["Exam", "Written exam taken as part of the approved course."],
+    ["Application fee", "$50, non-refundable"],
+    ["Eligibility", "At least 18; able to read, write and speak English; high school diploma or equivalent; North Carolina resident or regularly doing business in the state."],
+    ["Required manual", "Applicants must have the current North Carolina Notary Public Manual."],
+    ["Governing law", "North Carolina General Statutes, Chapter 10B"]
+   ],
+   "steps": [
+    "Confirm you meet the eligibility requirements.",
+    "Buy the current North Carolina Notary Public Manual.",
+    "Take an approved course of at least six hours and pass the written exam.",
+    "Within three months of the course, submit your application and $50 fee to the Secretary of State.",
+    "When approved, take your oath of office at the register of deeds in your county.",
+    "Order your official seal and start notarizing."
+   ],
+   "faq": [
+    ["Can I take the North Carolina notary course online?", "The statute calls for classroom instruction approved by the Secretary of State. Check with the Secretary of State or your community college for current options."],
+    ["How long do I have to apply after the course?", "Your application must be submitted within three months of completing the course."],
+    ["Is electronic notarization available?", "Yes, as a separate registration with its own education, exam and $50 fee, after you hold a regular commission."]
+   ],
+   "sources": [
+    ["North Carolina General Statutes, Chapter 10B", "https://www.ncleg.net/enactedlegislation/statutes/html/bychapter/chapter_10b.html"],
+    ["North Carolina Notary Public Manual (2026), UNC School of Government", "https://www.sog.unc.edu/publications/books/north-carolina-notary-public-manual-2026"]
+   ],
+   "test": "general"
+  }
+ ],
+ "all": ["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","District of Columbia","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]
+}
