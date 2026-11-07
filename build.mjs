@@ -47,22 +47,23 @@ ${SITE.staging ? '<meta name="robots" content="noindex, nofollow">' : ""}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="/assets/site.css">
 ${schema.map((s) => `<script type="application/ld+json">${JSON.stringify(s)}</script>`).join("\n")}
 </head>
 <body>
 ${SITE.staging ? '<div class="staging"><div class="wrap">Preview build. Not yet public.</div></div>' : ""}
 <header class="top"><div class="wrap">
-<a class="brand" href="/" aria-label="${SITE.name} home">${SEAL}${SITE.name}</a>
+<a class="brand" href="/" aria-label="${SITE.name} home">${SEAL}<span>My<em>Notary</em>Exam</span></a>
 <nav aria-label="Main">${navItem("/practice-test/", "test", "Practice test")}${navItem("/states/", "states", "States")}${navItem("/guides/", "guides", "Guides")}${navItem("/pro/", "pro", "Pro")}</nav>
 </div></header>
 <main class="wrap">
 ${body}
 </main>
 <footer><div class="wrap">
-<span>© ${SITE.year} ${SITE.name}. Independent study resource, not affiliated with any state commissioning office. Not legal advice.</span>
-<span><a href="/about/">About</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/contact/">Contact</a></span>
+<div class="foot-mark" aria-hidden="true">Signed, sealed, <em>commissioned.</em></div>
+<div class="foot-meta"><span>© ${SITE.year} ${SITE.name}. Independent study resource, not affiliated with any state commissioning office. Not legal advice.</span>
+<span><a href="/about/">About</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/contact/">Contact</a></span></div>
 </div></footer>
 ${testData}
 ${tests.length ? '<script src="/assets/quiz.js" defer></script>' : ""}
@@ -86,21 +87,61 @@ const SUPPLIES = `<section class="block"><h2>What new notaries buy first</h2><p 
 </div><p class="note" style="margin-top:10px">Some links on this site may be affiliate links. We may earn a commission at no extra cost to you.</p></section>`;
 
 // Home
+// Guilloché band: interlaced sine waves, like the border of a banknote or certificate.
+const GUILLOCHE = () => {
+  const W = 1200, H = 64, waves = [];
+  for (let k = 0; k < 10; k++) {
+    let d = ""; const ph = (k / 10) * Math.PI * 2;
+    for (let x = 0; x <= W; x += 6) { const y = H / 2 + Math.sin(x / 38 + ph) * 22 * Math.cos(x / 260 + k * 0.3); d += (x ? "L" : "M") + x + " " + y.toFixed(1); }
+    waves.push(`<path d="${d}"/>`);
+  }
+  return `<svg class="guilloche" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="var(--gold)" stroke-width=".7">${waves.join("")}</g></svg>`;
+};
+
+// Hero art: an embossed seal with a turning ring of engraved text, and a certificate corner.
+const SEAL_ART = () => {
+  const ticks = Array.from({ length: 72 }, (_, i) => { const a = (i / 72) * Math.PI * 2, r1 = 236, r2 = i % 6 ? 244 : 250; return `<line x1="${(260 + r1 * Math.cos(a)).toFixed(1)}" y1="${(260 + r1 * Math.sin(a)).toFixed(1)}" x2="${(260 + r2 * Math.cos(a)).toFixed(1)}" y2="${(260 + r2 * Math.sin(a)).toFixed(1)}"/>`; }).join("");
+  const petals = Array.from({ length: 24 }, (_, i) => `<ellipse cx="260" cy="260" rx="150" ry="58" transform="rotate(${i * 7.5} 260 260)"/>`).join("");
+  return `<div class="sealart" aria-hidden="true">
+<svg viewBox="0 0 520 520">
+<defs><path id="ringpath" d="M260,260 m-196,0 a196,196 0 1,1 392,0 a196,196 0 1,1 -392,0"/></defs>
+<circle cx="260" cy="260" r="256" fill="var(--sheet)" stroke="var(--hair)"/>
+<g stroke="var(--gold)" stroke-width="1.2" opacity=".8">${ticks}</g>
+<circle cx="260" cy="260" r="228" fill="none" stroke="var(--ink)" stroke-width="1.4"/>
+<circle cx="260" cy="260" r="222" fill="none" stroke="var(--ink)" stroke-width=".6"/>
+<g class="ring"><text font-family="IBM Plex Mono, monospace" font-size="17" letter-spacing="6.4" fill="var(--ink)"><textPath href="#ringpath">NOTARY PUBLIC · PRACTICE EXAMINATION · STATE OF EXCELLENCE · MMXXVI ·</textPath></text></g>
+<circle cx="260" cy="260" r="168" fill="none" stroke="var(--ink)" stroke-width=".8"/>
+<g fill="none" stroke="var(--gold)" stroke-width=".7" opacity=".75">${petals}</g>
+<circle cx="260" cy="260" r="96" fill="var(--sheet)" stroke="var(--ink)" stroke-width="1.2"/>
+<circle cx="260" cy="260" r="88" fill="none" stroke="var(--gold)" stroke-width=".8" stroke-dasharray="2 4"/>
+<text x="260" y="252" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="56" fill="var(--ink)">Seal</text>
+<text x="260" y="286" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing="3.5" fill="var(--ink-2)">OF APPROVAL</text>
+<path d="M226 302 l34 16 l34 -16" fill="none" stroke="var(--wax)" stroke-width="1.5"/>
+</svg>
+<div class="cert"><span class="label">Certificate of practice</span><b>This is to certify that you are ready.</b><div class="line"></div><span class="sig">Signed &amp; sealed</span></div>
+</div>`;
+};
+
+// Home
 page("/", {
   title: "Notary Practice Test 2026 | Free State Notary Exam Prep | MyNotaryExam",
   description: "Free notary practice tests written from official state handbooks, with an explanation for every answer. State guides for California, New York, Pennsylvania and North Carolina.",
   tests: ["general"],
   schema: [{ "@context": "https://schema.org", "@type": "WebSite", name: SITE.name, url: SITE.url }],
   body: `<div class="hero"><div>
-<div class="label">Updated for 2026 exams</div>
-<h1 style="margin-top:12px">Pass your notary exam the first time.</h1>
-<p class="lede">Free practice tests written from each state's official notary handbook, with an explanation for every answer. No sign-up needed to start.</p>
-<a class="btn primary" href="/states/">Find your state</a>
+<div class="ornament"><span class="label">Est. for the 2026 exams</span></div>
+<h1>Pass the notary exam <em>with distinction.</em></h1>
+<p class="lede">Practice tests written from each state's official notary handbook, with a clear explanation for every answer. No sign-up, no fee, no guesswork.</p>
+<div class="ctas"><a class="btn primary" href="/practice-test/">Begin the practice test</a><a class="btn ghost" href="/states/">Find your state</a></div>
 <div class="facts"><div><b>${TESTS.general.q.length + TESTS.california.q.length}</b><span class="label">practice questions</span></div><div><b>${STATES.detailed.length}</b><span class="label">state guides</span></div><div><b>70%</b><span class="label">passing mark</span></div></div>
-</div>${quizBox("general")}</div>
-<section class="block"><h2>State notary guides</h2><p class="sub">Requirements, fees, steps and a practice test for each state, with links to the official sources.</p>
-<div class="states">${STATES.detailed.map((s) => `<a class="state" href="/states/${s.slug}/"><strong>${s.name}</strong><span class="note">${s.requirement}</span><span class="chip ready">Guide + test</span></a>`).join("")}</div></section>
-<section class="block"><h2>Study guides</h2><p class="sub">Plain-English answers to the questions new notaries search for most.</p>${guideCards(guides.slice(0, 3))}</section>
+</div>${SEAL_ART()}</div>
+${GUILLOCHE()}
+<section class="block"><div class="sec-head"><h2>Sit the exam <em>before the exam.</em></h2><p>Twenty questions on the principles every state tests: notarial acts, identification, journals and conflicts of interest. Each answer is explained.</p></div>${quizBox("general")}</section>
+<section class="block"><div class="sec-head"><h2>Your state, <em>in full.</em></h2><p>Requirements, fees, every step of the process and a practice test for each state, with links to the official sources.</p></div>
+<div class="states">${STATES.detailed.map((s) => `<a class="state" href="/states/${s.slug}/"><span class="chip ready">${s.abbr}</span><strong>${s.name}</strong><span class="note">${s.requirement}</span></a>`).join("")}</div></section>
+<section class="block"><div class="band"><div><h2>Practice is free. <em>Pro is thorough.</em></h2><p>Unlimited state exams from a large question bank, a timed mode that matches the real test, and progress tracking. For when your commission depends on it.</p><a class="btn primary" href="/pro/">See Pro</a></div>
+<div><div class="stat"><b>$7</b><span>a month, cancel any time</span></div><div class="stat"><b>400+</b><span>questions per state</span></div><div class="stat"><b>Timed</b><span>mode that mirrors exam day</span></div></div></div></section>
+<section class="block"><div class="sec-head"><h2>Study <em>guides.</em></h2><p>Plain-English answers to the questions new notaries search for most.</p></div>${guideCards(guides.slice(0, 3))}</section>
 ${SUPPLIES}`,
 });
 
