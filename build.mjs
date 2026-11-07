@@ -15,7 +15,7 @@ const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&l
 const pages = [];
 const LOGO = `<svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 5v22M5 16h22" stroke="currentColor" stroke-width="1.4"/><path d="M16 7l3 9h-6z" fill="#E8A317"/></svg>`;
 
-function layout({ path, title, description, body, nav, schema = [], tests = [], app = false }) {
+function layout({ path, title, description, body, nav, schema = [], tests = [], app = false, poster = "" }) {
   const canonical = SITE.url + path;
   const n = (href, key, label) => `<a href="${href}"${nav === key ? ' aria-current="page"' : ""}>${label}</a>`;
   return `<!doctype html>
@@ -35,7 +35,7 @@ ${SITE.staging ? '<meta name="robots" content="noindex, nofollow">' : ""}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="/assets/site.css">
 ${schema.map((s) => `<script type="application/ld+json">${JSON.stringify(s)}</script>`).join("\n")}
 </head>
@@ -45,12 +45,14 @@ ${SITE.staging ? '<div class="staging"><div class="wrap">Preview build. Not yet 
 <a class="brand" href="/" aria-label="${SITE.name} home">${LOGO}${SITE.name}</a>
 <nav aria-label="Main">${n("/practice-test/", "test", "Practice test")}${n("/safety-equipment-checker/", "eq", "Equipment checker")}${n("/states/", "states", "States")}${n("/guides/", "guides", "Guides")}${n("/exam-pass/", "pass", "Exam Pass")}</nav>
 </div></header>
+${poster}
 <main class="wrap">
 ${body}
 </main>
 <footer><div class="wrap">
-<span>© ${SITE.year} ${SITE.name}. Independent study resource, not a state agency or an approved course provider.</span>
-<span><a href="/about/" style="color:inherit">About</a> · <a href="/privacy/" style="color:inherit">Privacy</a> · <a href="/terms/" style="color:inherit">Terms</a> · <a href="/contact/" style="color:inherit">Contact</a></span>
+<div class="foot-mark" aria-hidden="true">Fair winds. <span class="o">Pass first time.</span></div>
+<div class="foot-meta"><span>© ${SITE.year} ${SITE.name}. Independent study resource, not a state agency or an approved course provider.</span>
+<span><a href="/about/" style="color:inherit">About</a> · <a href="/privacy/" style="color:inherit">Privacy</a> · <a href="/terms/" style="color:inherit">Terms</a> · <a href="/contact/" style="color:inherit">Contact</a></span></div>
 </div></footer>
 ${tests.map((t) => `<script type="application/json" id="q-${t}">${JSON.stringify(TESTS[t].q).replace(/</g, "\\u003c")}</script>`).join("\n")}
 ${tests.length || app ? '<script src="/assets/app.js" defer></script>' : ""}
@@ -71,20 +73,33 @@ const GEAR = `<section class="block"><h2>Safety gear worth having</h2><p class="
 <div class="supply"><b>Visual distress signal kit</b><span class="note">For coastal waters and the Great Lakes</span></div>
 </div><p class="note" style="margin-top:10px">Some links on this site may be affiliate links. We may earn a commission at no extra cost to you.</p></section>`;
 
+// International maritime signal flags spelling P-A-S-S (ICS designs: Papa, Alfa, Sierra).
+const FLAG = { P: `<svg viewBox="0 0 90 60"><rect width="90" height="60" fill="#1D4E9E"/><rect x="27" y="18" width="36" height="24" fill="#fff"/></svg>`,
+  A: `<svg viewBox="0 0 90 60"><path d="M0 0H90L66 30L90 60H0Z" fill="#1D4E9E"/><path d="M0 0H40V60H0Z" fill="#fff"/></svg>`,
+  S: `<svg viewBox="0 0 90 60"><rect width="90" height="60" fill="#fff"/><rect x="27" y="18" width="36" height="24" fill="#1D4E9E"/></svg>` };
+const NAMES = { P: "Papa", A: "Alfa", S: "Sierra" };
+const ROSE = () => { let s = ""; for (let i = 0; i < 32; i++) { const a = (i / 32) * Math.PI * 2, r = i % 8 === 0 ? 270 : i % 4 === 0 ? 200 : 140, w = i % 8 === 0 ? 18 : 10; const x = 280 + Math.cos(a) * r, y = 280 + Math.sin(a) * r, lx = 280 + Math.cos(a + Math.PI / 2) * w, ly = 280 + Math.sin(a + Math.PI / 2) * w; s += `<path d="M280 280L${lx.toFixed(1)} ${ly.toFixed(1)}L${x.toFixed(1)} ${y.toFixed(1)}Z" fill="#F3F6F8"/>`; } return `<svg class="rose" viewBox="0 0 560 560" aria-hidden="true"><circle cx="280" cy="280" r="250" fill="none" stroke="#F3F6F8" stroke-width="2"/><circle cx="280" cy="280" r="232" fill="none" stroke="#F3F6F8" stroke-dasharray="2 8"/>${s}</svg>`; };
+const SWELL = () => { const wave = (amp, len, y) => { let d = `M0 ${y}`; for (let x = 0; x <= 2400; x += 20) d += ` L${x} ${(y + Math.sin((x / len) * Math.PI * 2) * amp).toFixed(1)}`; return d + " L2400 140 L0 140Z"; }; return `<svg class="swell" viewBox="0 0 1200 130" preserveAspectRatio="none" aria-hidden="true"><path d="${wave(10, 400, 56)}" fill="#8FB8DE" opacity=".18"/><path d="${wave(8, 200, 80)}" fill="var(--chart)"/></svg>`; };
+const POSTER = `<div class="poster">${ROSE()}<div class="wrap"><div>
+<div class="kick">Free · Updated for the 2026 season</div>
+<h1>Know the <span class="y">water.</span><span class="o">Pass the test.</span></h1>
+<p class="lede">Boater safety practice built on the national boating education standard, with an explanation for every answer. Then find out exactly what safety gear your boat must carry.</p>
+<div class="ctas"><a class="btn primary" href="/practice-test/">Start the practice test</a><a class="btn ghost" href="/safety-equipment-checker/">Check my boat's gear</a></div>
+<div class="coords"><div><span class="label">Questions</span><b>${TESTS.general.q.length}</b></div><div><span class="label">Pass mark</span><b>80%</b></div><div><span class="label">State guides</span><b>0${STATES.detailed.length}</b></div></div></div>
+<div class="halyard"><div class="flags" role="img" aria-label="Signal flags spelling PASS">${["P", "A", "S", "S"].map((l) => `<div class="flag">${FLAG[l]}<span>${l}</span><small>${NAMES[l]}</small></div>`).join("")}</div></div>
+</div>${SWELL()}</div>`;
+
 page("/", {
   title: "Boater Safety Practice Test 2026 | Free Boating Exam Prep",
   description: "Free boater safety practice test with explanations, a required safety equipment checker, and state boater education guides for Florida, Tennessee, Michigan and Texas.",
-  tests: ["general"], app: true,
+  tests: ["general"], app: true, poster: POSTER,
   schema: [{ "@context": "https://schema.org", "@type": "WebSite", name: SITE.name, url: SITE.url }],
-  body: `<div class="hero"><div><div class="label">Free · Updated for the 2026 season</div>
-<h1 style="margin-top:10px">Pass your <span>boater</span> <em>safety</em> exam.</h1>
-<p class="lede">Practice questions built on the national boating education standard, with an explanation for every answer. Then check exactly what equipment your boat needs.</p>
-<a class="btn primary" href="/safety-equipment-checker/">Check my boat's equipment</a>
-<div class="coords"><div><span class="label">Questions</span><b>${TESTS.general.q.length}</b></div><div><span class="label">Pass mark</span><b>80%</b></div><div><span class="label">State guides</span><b>0${STATES.detailed.length}</b></div></div></div>
-${quizBox("general")}</div>
-<section class="block"><h2>Required equipment checker</h2><p class="sub">Answer four questions about your boat and get its federal safety equipment checklist.</p>${eqBox}</section>
-<section class="block"><h2>State boater education guides</h2><p class="sub">Who needs a boater card, how to get one, and links to the official agency.</p><div class="states">${STATES.detailed.map((s) => `<a class="state" href="/states/${s.slug}/"><strong>${s.name}</strong><span class="dot ready"></span></a>`).join("")}</div></section>
-<section class="block"><h2>Study guides</h2><p class="sub">Clear answers to the rules new boaters get wrong most often.</p>${guideCards(guides)}</section>
+  body: `<section class="block" style="margin-top:72px"><div class="sec-head"><h2>Take the <span class="o">test.</span></h2><p>Twenty questions on rules of the road, buoys, lights, life jackets, fueling and emergencies. Every answer is explained, and your progress is saved as you go.</p></div>${quizBox("general")}</section>
+<section class="block"><div class="sec-head"><h2>What must <span class="o">you carry?</span></h2><p>Pick your boat's length, engine and waters. Get the U.S. Coast Guard federal equipment checklist for exactly your boat, instantly.</p></div>${eqBox}</section>
+<section class="block"><div class="sec-head"><h2>Your <span class="o">state.</span></h2><p>Who needs a boater card, how to get one, and links to the official agency.</p></div><div class="states">${STATES.detailed.map((s) => `<a class="state" href="/states/${s.slug}/"><strong>${s.name}</strong><span class="dot ready"></span></a>`).join("")}</div></section>
+<section class="block"><div class="band"><div><h2>One payment. Whole season.</h2><p>The Exam Pass adds 300+ questions for your state, a timed exam simulator and buoy and light flashcards. No subscription to cancel.</p><a class="btn primary" href="/exam-pass/">See the Exam Pass</a></div>
+<div><div class="stat"><b>$9</b><span>one time</span></div><div class="stat"><b>300+</b><span>state questions</span></div><div class="stat"><b>60</b><span>days of access</span></div></div></div></section>
+<section class="block"><div class="sec-head"><h2>Rules, <span class="o">explained.</span></h2><p>Clear answers to the rules new boaters get wrong most often.</p></div>${guideCards(guides)}</section>
 ${GEAR}`,
 });
 page("/practice-test/", {
