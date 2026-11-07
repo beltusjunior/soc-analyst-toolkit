@@ -15,7 +15,7 @@ const FLAME = `<svg viewBox="0 0 28 28" aria-hidden="true"><path d="M14 3c2 4 6 
 const SYM = guides.map((g) => ({ tree: g.tree, label: TREES[g.tree].name, slug: g.slug, title: g.title, description: g.description }));
 const MORE = [["Short cycling", "Turns on and off every few minutes."], ["Filter turning black", "Soot, mold, or just a dirty home?"], ["Burning smell", "Normal dust burn-off, or a real problem?"], ["High-limit switch keeps tripping", "What causes overheating and how to fix it."]];
 
-function layout({ path, title, description, body, nav, schema = [], tool = false }) {
+function layout({ path, title, description, body, nav, schema = [], tool = false, print = "" }) {
   const canonical = SITE.url + path;
   const n = (href, key, label) => `<a href="${href}"${nav === key ? ' aria-current="page"' : ""}>${label}</a>`;
   return `<!doctype html>
@@ -35,7 +35,7 @@ ${SITE.staging ? '<meta name="robots" content="noindex, nofollow">' : ""}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Atkinson+Hyperlegible:wght@400;700&family=Space+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=Atkinson+Hyperlegible:wght@400;700&family=Space+Mono:wght@400;700&display=swap">
 <link rel="stylesheet" href="/assets/site.css">
 ${schema.map((s) => `<script type="application/ld+json">${JSON.stringify(s)}</script>`).join("\n")}
 </head>
@@ -46,12 +46,14 @@ ${SITE.staging ? '<div class="staging"><div class="wrap">Preview build. Not yet 
 <a class="brand" href="/" aria-label="${SITE.name} home">${FLAME}${SITE.name}</a>
 <nav aria-label="Main">${n("/", "home", "Troubleshooter")}${n("/problems/", "problems", "All problems")}${n("/find-a-pro/", "pro", "Find a pro")}</nav>
 </div></header>
+${print}
 <main class="wrap">
 ${body}
 </main>
 <footer><div class="wrap">
-<span>© ${SITE.year} ${SITE.name}. Information only. Turn off power to the furnace before opening any panel. When in doubt, call a licensed technician.</span>
-<span><a href="/about/">About</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/affiliate-disclosure/">Affiliate disclosure</a></span>
+<div class="foot-mark" aria-hidden="true">Diagnose first. <span class="q">Pay second.</span></div>
+<div class="foot-meta"><span>© ${SITE.year} ${SITE.name}. Information only. Turn off power to the furnace before opening any panel. When in doubt, call a licensed technician.</span>
+<span><a href="/about/">About</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/affiliate-disclosure/">Affiliate disclosure</a></span></div>
 </div></footer>
 ${tool ? `<script type="application/json" id="trees">${JSON.stringify(TREES).replace(/</g, "\\u003c")}</script>\n<script src="/assets/app.js" defer></script>` : ""}
 </body>
@@ -69,19 +71,59 @@ const PARTS = `<section class="block"><h2>Parts most fixes need</h2><p class="su
 <div class="part"><b>Condensate pump</b><span class="note">A common replacement on high-efficiency furnaces</span></div>
 </div><p class="note" style="margin-top:10px">Some links on this site may be affiliate links. We may earn a commission at no extra cost to you.</p></section>`;
 
+// Hero drawing: a furnace cabinet in elevation, with a live pilot flame, a turning blower and lettered callouts.
+const DRAWING = () => {
+  const spokes = Array.from({ length: 12 }, (_, i) => { const a = (i / 12) * Math.PI * 2; return `<line x1="${(200 + Math.cos(a) * 14).toFixed(1)}" y1="${(372 + Math.sin(a) * 14).toFixed(1)}" x2="${(200 + Math.cos(a + 0.5) * 48).toFixed(1)}" y2="${(372 + Math.sin(a + 0.5) * 48).toFixed(1)}"/>`; }).join("");
+  const louvers = Array.from({ length: 6 }, (_, i) => `<line x1="96" y1="${300 + i * 9}" x2="134" y2="${300 + i * 9}"/>`).join("");
+  return `<div class="drawing" aria-hidden="true"><svg viewBox="0 0 470 500">
+<path class="ln" d="M170 20 v44 M230 20 v44 M170 20 h60"/><path class="thin" d="M176 26 h48"/>
+<rect class="ln" x="80" y="64" width="240" height="380" rx="4"/>
+<line class="thin" x1="80" y1="270" x2="320" y2="270"/>
+<rect class="thin" x="120" y="110" width="160" height="40"/>
+<g class="thin">${Array.from({ length: 7 }, (_, i) => `<line x1="${132 + i * 22}" y1="116" x2="${132 + i * 22}" y2="144"/>`).join("")}</g>
+<rect class="ln" x="150" y="180" width="100" height="62" rx="3"/>
+<path class="fl1" d="M200 238 C188 226 190 210 200 196 C210 210 212 226 200 238Z" fill="#FFB547" opacity=".95"/>
+<path class="fl2" d="M200 238 C194 230 195 220 200 212 C205 220 206 230 200 238Z" fill="#5FA8FF"/>
+<line class="thin" x1="160" y1="240" x2="240" y2="240"/>
+<circle class="ln" cx="200" cy="372" r="56"/><circle class="thin" cx="200" cy="372" r="62"/>
+<g class="blower thin">${spokes}<circle cx="200" cy="372" r="14"/></g>
+<g class="thin">${louvers}</g>
+<rect class="ln" x="80" y="444" width="240" height="18"/><line class="thin" x1="80" y1="453" x2="320" y2="453"/>
+<path class="ln" d="M300 444 v-26 h28 v40"/>
+<path class="dim" d="M80 486 h240 M80 478 v16 M320 478 v16"/><text x="170" y="500">W 24 IN</text>
+<path class="dim" d="M44 64 v380 M36 64 h16 M36 444 h16"/><text x="10" y="258" transform="rotate(-90 22 258)">H 48 IN</text>
+<g><line class="thin" x1="252" y1="208" x2="356" y2="166"/><circle cx="252" cy="208" r="3" fill="#FFB547"/><text class="callout" x="362" y="162">A</text><text x="362" y="178">FLAME</text><text x="362" y="192">SENSOR</text></g>
+<g><line class="thin" x1="256" y1="372" x2="356" y2="340"/><circle cx="256" cy="372" r="3" fill="#FFB547"/><text class="callout" x="362" y="336">B</text><text x="362" y="352">BLOWER</text></g>
+<g><line class="thin" x1="320" y1="453" x2="356" y2="470"/><circle cx="320" cy="453" r="3" fill="#FFB547"/><text class="callout" x="362" y="474">C</text><text x="362" y="490">FILTER</text></g>
+<g><line class="thin" x1="230" y1="40" x2="356" y2="56"/><circle cx="230" cy="40" r="3" fill="#FFB547"/><text class="callout" x="362" y="52">D</text><text x="362" y="68">FLUE</text></g>
+<g><line class="thin" x1="328" y1="432" x2="356" y2="420"/><circle cx="328" cy="432" r="3" fill="#FFB547"/><text class="callout" x="362" y="416">E</text><text x="362" y="432">CONDENSATE</text></g>
+</svg>
+<div class="titleblock"><span>Drawing</span><span><b>WIMF-01</b></span><span>Subject</span><span>Gas furnace</span><span>Rev.</span><span>2026</span></div></div>`;
+};
+const PRINT = `<div class="print"><div class="wrap"><div>
+<div class="kick"><span>Free diagnostic</span><span>4 problems</span><span>No sign-up</span></div>
+<h1>Why is my furnace <span class="q">doing that?</span></h1>
+<p class="lede">Answer a few quick questions. Find out if it's a five-minute fix you can do yourself or a job for a licensed technician, before you pay for a service call.</p>
+<div class="pick">Pick the problem</div>
+<div class="searches">${SYM.map((s) => `<button data-pick="${s.tree}" aria-pressed="false">${esc(s.label)}</button>`).join("")}</div>
+</div>${DRAWING()}</div></div>`;
+const BOM = `<div class="bom tablewrap"><table><tr><th>Item</th><th>Part</th><th>Used for</th><th>Notes</th></tr>
+<tr><td>01</td><td><b>Furnace filters, auto-delivered</b></td><td>Cold air, whistling, overheating</td><td class="note">Never miss a change</td></tr>
+<tr><td>02</td><td><b>Carbon monoxide alarm</b></td><td>Every home with gas appliances</td><td class="note">One per floor, near bedrooms</td></tr>
+<tr><td>03</td><td><b>Smart thermostat</b></td><td>No heat, short cycling</td><td class="note">Alerts you when heat stops</td></tr>
+<tr><td>04</td><td><b>Condensate pump</b></td><td>Leaking water (high-efficiency units)</td><td class="note">Common replacement</td></tr>
+</table></div><p class="note" style="margin-top:10px">Some links on this site may be affiliate links. We may earn a commission at no extra cost to you.</p>`;
+
 page("/", {
-  nav: "home", tool: true,
+  nav: "home", tool: true, print: PRINT,
   title: "Why Is My Furnace Doing That? Free Furnace Troubleshooter",
   description: "Answer a few questions to find out why your furnace is blowing cold air, not turning on, leaking water or making noise, and whether you can fix it yourself.",
   schema: [{ "@context": "https://schema.org", "@type": "WebSite", name: SITE.name, url: SITE.url }],
-  body: `<div class="hero"><div><div class="label">Free diagnostic tool</div>
-<h1 style="margin-top:10px">Why is my furnace <span>doing that?</span></h1>
-<p class="lede">Answer a few quick questions and find out whether it's a five-minute fix or a job for a technician, before you pay for a service call.</p>
-<div class="label" style="margin-bottom:8px">Pick your problem</div>
-<div class="searches">${SYM.map((s) => `<button data-pick="${s.tree}" aria-pressed="false">${esc(s.label)}</button>`).join("")}</div></div>
-${toolBox()}</div>
-<section class="block"><h2>Common furnace problems</h2><p class="sub">Each guide ranks the causes from most to least likely, with step-by-step fixes and clear signs that it's time to call a pro.</p>${symCards}</section>
-${PARTS}`,
+  body: `<section class="block toolsec" style="margin-top:64px"><div class="sec-head"><div><span class="label">Step-by-step diagnosis</span><h2>Start the <span class="q">diagnosis.</span></h2></div><p>One question at a time, like a technician on the phone. Each path ends with what to do, how long it takes and what it usually costs.</p></div>${toolBox()}</section>
+<section class="block"><div class="sec-head"><div><span class="label">Problem guides</span><h2>What it's <span class="q">telling you.</span></h2></div><p>Each guide ranks the causes from most to least likely, with step-by-step fixes and clear signs that it's time to call a pro.</p></div>${symCards}</section>
+<section class="block"><div class="band"><div><h2>Some fixes are <span class="q">not DIY.</span></h2><p>Gas, high voltage and carbon monoxide are not worth the risk. The troubleshooter tells you plainly when to stop and call a licensed technician.</p><a class="btn primary" href="/find-a-pro/">When to call a pro</a></div>
+<ul><li><b>01</b>You smell gas: leave first, then call from outside</li><li><b>02</b>A boom when the burners light</li><li><b>03</b>Metal scraping from the blower</li><li><b>04</b>Water leaking from a metal flue</li></ul></div></section>
+<section class="block"><div class="sec-head"><div><span class="label">Bill of materials</span><h2>Parts most fixes <span class="q">need.</span></h2></div><p>Most DIY furnace fixes need one of these.</p></div>${BOM}</section>`,
 });
 page("/problems/", { nav: "problems", title: "Furnace Problems and Fixes | whyismyfurnace", description: "Find your furnace problem: cold air, no heat, water leaks or strange noises.", schema: [bc([["/", "Home"], ["/problems/", "All problems"]])],
   body: `${crumbs([["/", "Home"], [null, "All problems"]])}<h1 class="page-h1">What is your furnace doing?</h1><p class="lede2">Pick the problem that matches. Each guide includes its own troubleshooter.</p>${symCards}` });
